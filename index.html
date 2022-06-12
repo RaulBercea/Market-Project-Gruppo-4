@@ -1,30 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="HTML of our Javascript Project" />
+		<meta name="author" content="Gruppo 4" />
+		<title>Expiry List</title>
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<link rel="stylesheet" href="./styles/modern-reset.css" />
+	</head>
+	<body>
+		<!-- Container for the main table -->
+		<div class="table-container">
+			<!-- Separator containing the week and the date  -->
+			<div class="separator-container">
+				<p>Week 1</p>
+				<p>12-17-2020</p>
+			</div>
+			<!-- The table before being filtered -->
+			<table class="main-table">
+				<!-- the heading of the table -->
+				<tr class="table-header">
+					<th class="id-header">ID</th>
+					<th class="name-header">Name</th>
+					<th class="exp-date-header">Expiry Date</th>
+					<th class="status-header">Status</th>
+					<th class="checks-header">Checks</th>
+				</tr>
+				<!-- The main part of the table where the list will be added -->
+				<tr class="table-body">
+					<td class="id-body">1</td>
+					<td class="name-body">Milk</td>
+					<td class="exp-date-body">12-17-2020</td>
+					<td class="status-body">Expired</td>
+					<td class="checks-body">2</td>
+				</tr>
+				<tr class="table-body">
+					<td class="id-body">1</td>
+					<td class="name-body">Milk</td>
+					<td class="exp-date-body">12-17-2020</td>
+					<td class="status-body">Expired</td>
+					<td class="checks-body">2</td>
+				</tr>
+				<tr class="table-body">
+					<td class="id-body">1</td>
+					<td class="name-body">Milk</td>
+					<td class="exp-date-body">12-17-2020</td>
+					<td class="status-body">Expired</td>
+					<td class="checks-body">2</td>
+				</tr>
+				<tr class="table-body">
+					<td class="id-body">1</td>
+					<td class="name-body">Milk</td>
+					<td class="exp-date-body">12-17-2020</td>
+					<td class="status-body">Expired</td>
+					<td class="checks-body">2</td>
+				</tr>
+			</table>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HTML of our Javascript Project">
-    <meta name="author" content="Nemanja Gajicic, Pietro Milanse, Davide Murroni, Jacopo Trompeo">
-    <title>Expiry List</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-</head>
-
-<body>
-
-    <div>
-        <h1>Expiry List</h1>
-        <h2>A filtered Item List</h2>
-        <button id="start">Start</button>
-    </div>
-
-    <div>
-        <p>To get started, open the console and press <span>start</span></p>
-        <p><span>Authors</span>: Nemanja Gajicic, Pietro Milanese, Jacopo Trompeo, Davide Murroni</p>
-    </div>
-
-    <script type="module" src="./scripts/main.mjs"></script>
-</body>
-
+			<!-- Separator for the filtered list -->
+			<div class="separator-container">
+				<p>filtered</p>
+			</div>
+			<!-- The table after being filtered -->
+			<table class="main-table">
+				<tr class="table-header">
+					<th class="id-header">ID</th>
+					<th class="name-header">Name</th>
+					<th class="exp-date-header">Expiry Date</th>
+					<th class="status-header">Status</th>
+					<th class="checks-header">Checks</th>
+				</tr>
+				<!-- the filtered rows -->
+				<tr class="table-body">
+					<td class="id-body">1</td>
+					<td class="name-body">Milk</td>
+					<td class="exp-date-body">12-17-2020</td>
+					<td class="status-body">Expired</td>
+					<td class="checks-body">2</td>
+				</tr>
+				<tr class="table-body">
+					<td class="id-body">1</td>
+					<td class="name-body">Milk</td>
+					<td class="exp-date-body">12-17-2020</td>
+					<td class="status-body">Expired</td>
+					<td class="checks-body">2</td>
+				</tr>
+			</table>
+		</div>
+		<script type="module" src="./scripts/main.mjs"></script>
+	</body>
 </html>
