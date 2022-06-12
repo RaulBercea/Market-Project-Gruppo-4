@@ -1,0 +1,119 @@
+/* styles.css : The main style of the page */
+
+/* importing font */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+
+/* Giving everything the new font */
+* {
+	font-family: "Lato", sans-serif;
+}
+
+/* color palette */
+:root {
+	--white: #fffaff;
+	--black: #1e1b18;
+	--grey: #e6e6e6;
+	--accent-color-1: #3e92cc;
+	--accent-color-2: #d8315b;
+}
+
+/* Backgroun color for the body */
+body {
+	background-color: var(--white);
+}
+
+/* Style for the table container */
+.table-container {
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 200px;
+	background-color: var(--white);
+	border: 1px solid var(--black);
+	padding: 40px;
+	box-shadow: var(--black) 0px 0px 10px;
+}
+
+/* Style for the separator between the tables */
+.separator-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: var(--accent-color-1);
+	padding: 15px;
+	margin: 10px 0px;
+}
+
+/* Making the font for the separator bigger and bold */
+.separator-container p {
+	font-weight: bold;
+	color: var(--white);
+	text-transform: uppercase;
+	font-size: 1rem;
+}
+
+.main-table {
+	width: 100%;
+}
+
+.table-header {
+	width: 100%;
+	background-color: var(--accent-color-2);
+}
+
+.table-header th {
+	text-align: left;
+	padding: 5px;
+	color: var(--white);
+	font-size: 1rem;
+}
+
+.table-body {
+	width: 100%;
+}
+
+.table-body td {
+	padding: 5px;
+}
+
+.table-body:nth-last-of-type(odd) {
+	background-color: var(--grey);
+}
+
+/* style for the header */
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: var(--accent-color-1);
+	color: var(--white);
+	font-size: 1.3rem;
+	font-weight: bold;
+	box-shadow: var(--black) 0px 0px 10px;
+}
+
+.logo-image {
+	width: 50px;
+	height: 50px;
+	filter: invert(87%) sepia(22%) saturate(156%) hue-rotate(266deg)
+		brightness(109%) contrast(105%);
+}
+
+.logo {
+	display: flex;
+}
+
+/* Style for the footer */
+.footer {
+	bottom: 0;
+	width: 100vw;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	background-color: var(--accent-color-1);
+	color: var(--white);
+	font-size: 0.9rem;
+	box-shadow: var(--black) 0px 0px 10px;
+}
