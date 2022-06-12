@@ -24,9 +24,8 @@ body {
 
 /* Style for the table container */
 .table-container {
-	width: 50%;
+	width: 85%;
 	margin: 0 auto;
-	margin-top: 200px;
 	background-color: var(--white);
 	border: 1px solid var(--black);
 	padding: 40px;
@@ -107,8 +106,9 @@ body {
 /* Style for the footer */
 .footer {
 	bottom: 0;
-	width: 100vw;
-	position: absolute;
+	width: 100%;
+	margin-top: 200px;
+	position: relative;
 	display: flex;
 	justify-content: center;
 	padding: 10px;
@@ -116,4 +116,33 @@ body {
 	color: var(--white);
 	font-size: 0.9rem;
 	box-shadow: var(--black) 0px 0px 10px;
+}
+
+button {
+	width: 70px;
+	height: 50px;
+	background-color: var(--accent-color-2);
+	color: var(--white);
+	font-weight: bold;
+	border: none;
+	transition: all 0.1s ease-in-out;
+}
+
+/* Changing the background color on hover for the button */
+button:hover {
+	background-color: var(--accent-color-1);
+}
+
+/* making the button squish on click */
+button:active {
+	transform: scale(0.95);
+}
+
+.main {
+	margin: auto;
+	width: 60%;
+	margin-top: 200px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }

@@ -22,83 +22,115 @@
 			</div>
 			<h1>Inventory Management System</h1>
 		</div>
-		<!-- Container for the main table -->
-		<div class="table-container">
-			<!-- Separator containing the week and the date  -->
-			<div class="separator-container">
-				<p>Week 1</p>
-				<p>12-17-2020</p>
+		<div class="main">
+			<button class="back-button"><<</button>
+			<!-- Container for the main table -->
+			<div class="table-container">
+				<!-- Separator containing the week and the date  -->
+				<div class="separator-container">
+					<p>Week 1</p>
+					<p>12-17-2020</p>
+				</div>
+				<!-- The table before being filtered -->
+				<table class="main-table">
+					<!-- the heading of the table -->
+					<tr class="table-header">
+						<th class="id-header">ID</th>
+						<th class="name-header">Name</th>
+						<th class="exp-date-header">Expiry Date</th>
+						<th class="status-header">Status</th>
+						<th class="checks-header">Checks</th>
+					</tr>
+					<!-- The main part of the table where the list will be added -->
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+				</table>
+				<!-- Separator for the filtered list -->
+				<div class="separator-container">
+					<p>filtered</p>
+				</div>
+				<!-- The table after being filtered -->
+				<table class="main-table">
+					<tr class="table-header">
+						<th class="id-header">ID</th>
+						<th class="name-header">Name</th>
+						<th class="exp-date-header">Expiry Date</th>
+						<th class="status-header">Status</th>
+						<th class="checks-header">Checks</th>
+					</tr>
+					<!-- the filtered rows -->
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+					<tr class="table-body">
+						<td class="id-body">1</td>
+						<td class="name-body">Milk</td>
+						<td class="exp-date-body">12-17-2020</td>
+						<td class="status-body">Expired</td>
+						<td class="checks-body">2</td>
+					</tr>
+				</table>
 			</div>
-			<!-- The table before being filtered -->
-			<table class="main-table">
-				<!-- the heading of the table -->
-				<tr class="table-header">
-					<th class="id-header">ID</th>
-					<th class="name-header">Name</th>
-					<th class="exp-date-header">Expiry Date</th>
-					<th class="status-header">Status</th>
-					<th class="checks-header">Checks</th>
-				</tr>
-				<!-- The main part of the table where the list will be added -->
-				<tr class="table-body">
-					<td class="id-body">1</td>
-					<td class="name-body">Milk</td>
-					<td class="exp-date-body">12-17-2020</td>
-					<td class="status-body">Expired</td>
-					<td class="checks-body">2</td>
-				</tr>
-				<tr class="table-body">
-					<td class="id-body">1</td>
-					<td class="name-body">Milk</td>
-					<td class="exp-date-body">12-17-2020</td>
-					<td class="status-body">Expired</td>
-					<td class="checks-body">2</td>
-				</tr>
-				<tr class="table-body">
-					<td class="id-body">1</td>
-					<td class="name-body">Milk</td>
-					<td class="exp-date-body">12-17-2020</td>
-					<td class="status-body">Expired</td>
-					<td class="checks-body">2</td>
-				</tr>
-				<tr class="table-body">
-					<td class="id-body">1</td>
-					<td class="name-body">Milk</td>
-					<td class="exp-date-body">12-17-2020</td>
-					<td class="status-body">Expired</td>
-					<td class="checks-body">2</td>
-				</tr>
-			</table>
 
-			<!-- Separator for the filtered list -->
-			<div class="separator-container">
-				<p>filtered</p>
-			</div>
-			<!-- The table after being filtered -->
-			<table class="main-table">
-				<tr class="table-header">
-					<th class="id-header">ID</th>
-					<th class="name-header">Name</th>
-					<th class="exp-date-header">Expiry Date</th>
-					<th class="status-header">Status</th>
-					<th class="checks-header">Checks</th>
-				</tr>
-				<!-- the filtered rows -->
-				<tr class="table-body">
-					<td class="id-body">1</td>
-					<td class="name-body">Milk</td>
-					<td class="exp-date-body">12-17-2020</td>
-					<td class="status-body">Expired</td>
-					<td class="checks-body">2</td>
-				</tr>
-				<tr class="table-body">
-					<td class="id-body">1</td>
-					<td class="name-body">Milk</td>
-					<td class="exp-date-body">12-17-2020</td>
-					<td class="status-body">Expired</td>
-					<td class="checks-body">2</td>
-				</tr>
-			</table>
+			<button class="forward-button">>></button>
 		</div>
 		<div class="footer">
 			<p>
