@@ -125,7 +125,7 @@ button {
 	color: var(--white);
 	font-weight: bold;
 	border: none;
-	transition: all 500ms ease-in;
+	transition: all 200ms ease-in;
 }
 
 /* Changing the background color on hover for the button */
