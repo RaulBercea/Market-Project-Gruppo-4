@@ -60,6 +60,7 @@ select {
 	font: inherit;
 }
 
+/* Collapsing table borders */
 table {
 	border-collapse: collapse;
 }
