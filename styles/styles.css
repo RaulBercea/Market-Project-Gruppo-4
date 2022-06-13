@@ -24,7 +24,7 @@ body {
 
 /* Style for the table container */
 .table-container {
-	width: 85%;
+	width: 80%;
 	margin: 0 auto;
 	background-color: var(--white);
 	border: 1px solid var(--black);
@@ -107,7 +107,7 @@ body {
 .footer {
 	bottom: 0;
 	width: 100%;
-	margin-top: 200px;
+	margin-top: 100px;
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -125,7 +125,7 @@ button {
 	color: var(--white);
 	font-weight: bold;
 	border: none;
-	transition: all 0.1s ease-in-out;
+	transition: all 500ms ease-in;
 }
 
 /* Changing the background color on hover for the button */
@@ -135,13 +135,14 @@ button:hover {
 
 /* making the button squish on click */
 button:active {
-	transform: scale(0.95);
+	transform: scale(0.90);
 }
 
+/* Style for the main container wich has the table and the buttons together */
 .main {
 	margin: auto;
 	width: 60%;
-	margin-top: 200px;
+	margin-top: 100px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
