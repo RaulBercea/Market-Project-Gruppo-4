@@ -35,7 +35,7 @@ export let config = {
 	startingOffset: 3,
 	shelfLife: 2,
 	newItemsPerWeek: 5,
-	weeksRuntime: 4,
+	weeksRuntime: 7,
 	intervalSeconds: 1,
 	zeroPaddedDigits: 3,
 	paddingCharacter: "*",

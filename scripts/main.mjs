@@ -14,72 +14,48 @@ import { itemNames } from "./itemsNames.mjs"; //array with a list of all possibl
 let isRunning = false;
 
 let init = () => {
-	let runtime = cnf.weeksRuntime;
+  let runtime = cnf.weeksRuntime;
+  //startDate and endDate define the range of the generated items' expiry dates
+  let startDate = new Date();
+  let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
 
-	if (runtime <= 0) {
-		console.log("The program runitme is either 0 or less. Please check your configuration file.");
-		return;
-	}
+  let currentDate = fn.addDays(startDate, cnf.startingOffset);
+  let weeks = [];
+  let items = [];
 
-	if (isRunning) {
-		console.log("The program is already running.");
-		return;
-	}
+  let startConfig = {
+    itemNames,
+    startDate,
+    endDate,
+    currentDate,
+    shelfLife: cnf.shelfLife,
+  };
 
-	isRunning = true;
+  for (let i = 0; i < runtime; i++) {
+    // 1) Add new items
+    items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
 
-	//startDate and endDate define the range of the generated items' expiry dates
-	let startDate = new Date();
-	let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
+    // 2) Print all of the items
+    // console.log(`Week of ${fn.formatDate(currentDate, cnf)}`);
+    // console.log("---------------------------------------------------------");
+    // fn.printItems(items, cnf);
+	weeks.push(items);
+    // 3) Filter the items and print the filtered list
+    items = items.filter(fn.checkItem);
+    // console.log("Filtered");
+    // console.log("--------");
+    // fn.printItems(items, cnf);
+    // console.log("");
 
-	let interval = Math.floor(Math.random() * (cnf.maxIntervalSec - cnf.minIntervalSec + 1) + cnf.minIntervalSec);
-	console.log(`Seconds interval: ${interval} (between ${cnf.minIntervalSec} and ${cnf.maxIntervalSec})`);
+    // 4) Add days to the current date
+    currentDate = fn.addDays(currentDate, cnf.daysInWeek);
 
-	let currentDate = fn.addDays(startDate, cnf.startingOffset);
-
-	let items = [];
-
-	let id = setInterval(() => {
-		let startConfig = {
-			itemNames,
-			startDate,
-			endDate,
-			currentDate,
-			shelfLife: cnf.shelfLife,
-		};
-
-		// 1) Add new items
-		items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
-
-		// 2) Print all of the items
-		console.log(`Week of ${fn.formatDate(currentDate, cnf)}`);
-		console.log("---------------------------------------------------------");
-		fn.printItems(items, cnf);
-
-		// 3) Filter the items and print the filtered list
-		items = items.filter(fn.checkItem);
-		console.log("Filtered");
-		console.log("--------");
-		fn.printItems(items, cnf);
-		console.log("");
-
-		// 4) Add days to the current date
-		currentDate = fn.addDays(currentDate, cnf.daysInWeek);
-
-		// 5) Update the items (state and checks)
-		items.forEach(item => {
-			fn.updateChecks(item);
-			fn.updateState(item, currentDate, cnf.shelfLife);
-		});
-
-		// 6) Check if the program should go on
-		runtime--;
-		if (runtime <= 0) {
-			clearInterval(id);
-			isRunning = false;
-		}
-	}, interval * 1000);
+    // 5) Update the items (state and checks)
+    items.forEach((item) => {
+      fn.updateChecks(item);
+      fn.updateState(item, currentDate, cnf.shelfLife);
+    });
+  }
+  console.log(weeks);
 };
-
-let button = document.getElementById("start");
-button.addEventListener("click", init);
+init();
