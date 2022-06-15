@@ -125,7 +125,7 @@ button {
 	color: var(--white);
 	font-weight: bold;
 	border: none;
-	transition: all 200ms ease-in;
+	transition: all 100ms ease-in;
 }
 
 /* Changing the background color on hover for the button */
@@ -135,7 +135,7 @@ button:hover {
 
 /* making the button squish on click */
 button:active {
-	transform: scale(0.90);
+	transform: scale(0.95);
 }
 
 /* Style for the main container wich has the table and the buttons together */

@@ -20,8 +20,8 @@ let init = () => {
   let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
 
   let currentDate = fn.addDays(startDate, cnf.startingOffset);
-  let weeks = [];
-  let items = [];
+  let weeks = [];// aray wich will hold the items divided by week
+  let items = [];//	array which will hold the items
 
   let startConfig = {
     itemNames,
