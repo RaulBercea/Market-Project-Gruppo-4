@@ -39,7 +39,7 @@ let init = () => {
     // console.log(`Week of ${fn.formatDate(currentDate, cnf)}`);
     // console.log("---------------------------------------------------------");
     // fn.printItems(items, cnf);
-	weeks.push(items);
+	  weeks.push(items);
     // 3) Filter the items and print the filtered list
     items = items.filter(fn.checkItem);
     // console.log("Filtered");
