@@ -1,144 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="HTML of our Javascript Project" />
-		<meta name="author" content="Gruppo 4" />
-		<title>Expiry List</title>
-		<link rel="stylesheet" href="./styles/styles.css" />
-		<link rel="stylesheet" href="./styles/modern-reset.css" />
-	</head>
-	<body>
-		<div class="header">
-			<div class="logo">
-				<img
-					class="logo-image"
-					src="./img/flower-icon.svg"
-					alt="flower icon"
-				/>
-				<h1>Market</h1>
-			</div>
-			<h1>Inventory Management System</h1>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="HTML of our Javascript Project" />
+	<meta name="author" content="Gruppo 4" />
+	<title>Expiry List</title>
+	<link rel="stylesheet" href="./styles/styles.css" />
+	<link rel="stylesheet" href="./styles/modern-reset.css" />
+</head>
+
+<body>
+	<div class="header">
+		<div class="logo">
+			<img class="logo-image" src="./img/flower-icon.svg" alt="flower icon" />
+			<h1>Market</h1>
 		</div>
-		<div class="main">
-			<button class="back-button"><<</button>
-			<!-- Container for the main table -->
-			<div class="table-container">
-				<!-- Separator containing the week and the date  -->
-				<div class="separator-container">
-					<p>Week 1</p>
-					<p>12-17-2020</p>
-				</div>
-				<!-- The table before being filtered -->
-				<table class="main-table">
-					<!-- the heading of the table -->
-					<tr class="table-header">
-						<th class="id-header">ID</th>
-						<th class="name-header">Name</th>
-						<th class="exp-date-header">Expiry Date</th>
-						<th class="status-header">Status</th>
-						<th class="checks-header">Checks</th>
-					</tr>
-					<!-- The main part of the table where the list will be added -->
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-				</table>
-				<!-- Separator for the filtered list -->
-				<div class="separator-container">
-					<p>filtered</p>
-				</div>
-				<!-- The table after being filtered -->
-				<table class="main-table">
-					<tr class="table-header">
-						<th class="id-header">ID</th>
-						<th class="name-header">Name</th>
-						<th class="exp-date-header">Expiry Date</th>
-						<th class="status-header">Status</th>
-						<th class="checks-header">Checks</th>
-					</tr>
-					<!-- the filtered rows -->
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-					<tr class="table-body">
-						<td class="id-body">1</td>
-						<td class="name-body">Milk</td>
-						<td class="exp-date-body">12-17-2020</td>
-						<td class="status-body">Expired</td>
-						<td class="checks-body">2</td>
-					</tr>
-				</table>
+		<h1>Inventory Management System</h1>
+		<div >
+			<p id="target" class="target2">Setting</p>
+
+			<div id="hidden-setting">
+				<form action="..." id="form">
+					<div>
+						<h5></h5>
+						<label for="weeks-setting">Weeks</label>
+						<input type="number" id="weeks-setting" placeholder="14"> 
+					</div>
+
+					<div>
+						<h5></h5>
+						<label for="weekly-production-setting">Weekly Production</label>
+						<input type="number" id="weekly-production-setting" placeholder="6">
+					</div>
+
+					<div>
+						<h5></h5>
+						<label for="weekly-duration-setting">Weekly Duration</label>
+						<input type="number" id="weekly-duration-setting" placeholder="3">
+					</div>
+
+					<div>
+						<h5></h5>
+						<label for="check-threshold-setting">Check Threshold</label>
+						<input type="number" id="check-threshold-setting" placeholder="3">
+					</div>
+
+					<div>
+						<h5></h5>
+						<label for="start-date-setting">Start Date</label>
+						<input type="date" id="start-date-setting">
+					</div>
+
+					<div>
+						<h5></h5>
+						<label for="date-offset-setting">Date Offset</label>
+						<input type="number" id="date-offset-setting" placeholder="2">
+					</div>
+				</form>
 			</div>
 
-			<button class="forward-button">>></button>
+			<br>
+			<button id="submit">submit</button>
+
 		</div>
-		<div class="footer">
-			<p>
-				Copyright &copy; 2022 Raul Bercea, Pietro Milanese, Dario Di
-				Maria, Gabriele Bovolenta, Joele Melchiorre - Licensed under MIT
-				licence
-			</p>
-		</div>
-		<script type="module" src="./scripts/main.mjs"></script>
-	</body>
+	</div>
+
+	<div class="main">
+		<button id="back-button">&#8592;</button>
+				<!-- Container for the main table -->
+				<div class="table-container">
+				</div>
+
+				<button id="forward-button">&#8594;</button>
+	</div>
+
+	<div class="footer">
+		<p>
+			Copyright &copy; 2022 Raul Bercea, Pietro Milanese, Dario Di
+			Maria, Gabriele Bovolenta, Joele Melchiorre - Licensed under MIT
+			licence
+		</p>
+	</div>
+
+	<script type="module" src="./scripts/main.mjs"></script>
+	<script src="./scripts/setting.js"></script>
+</body>
+
 </html>
