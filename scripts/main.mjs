@@ -35,17 +35,9 @@ let init = () => {
     // 1) Add new items
     items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
 
-    // 2) Print all of the items
-    // console.log(`Week of ${fn.formatDate(currentDate, cnf)}`);
-    // console.log("---------------------------------------------------------");
-    // fn.printItems(items, cnf);
 	  weeks.push(items);
     // 3) Filter the items and print the filtered list
     items = items.filter(fn.checkItem);
-    // console.log("Filtered");
-    // console.log("--------");
-    // fn.printItems(items, cnf);
-    // console.log("");
 
     // 4) Add days to the current date
     currentDate = fn.addDays(currentDate, cnf.daysInWeek);
