@@ -42,19 +42,6 @@ export let printItems = (table, items) => {
   });
 };
 
-//print separator Filtered elements
-export let printSeparator = (table, index) => {
-  let separatorRow = document.createElement("tr");
-  separatorRow.classList.add("separator-container");
-  separatorRow.setAttribute("id", "title-filter-week-" + index);
-  let separatorRowTd = document.createElement("td");
-  let separatorRowTdText = document.createTextNode("Filtered");
-  separatorRowTd.appendChild(separatorRowTdText);
-  separatorRow.appendChild(separatorRowTd);
-
-  table.appendChild(separatorRow);
-};
-
 //printfulltable
 export let printTable = (tablesContainer, items, index) => {
   let weekTable = document.createElement("table");
