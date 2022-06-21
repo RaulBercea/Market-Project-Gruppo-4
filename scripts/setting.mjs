@@ -1,21 +1,23 @@
 /**
- * @file: setting.js
- * 
- * validate-form
+ * @file main.mjs
+ * @authors Gabriele Bovolenta, Pietro Milanese, Dario Di Maria, Raul Bercea
+ * Setting file for validation's form
+ *
+ * This file imports config to edit it through the form.
  */
 
-// SETTING FORM
+import { config as cnf } from "./config.mjs"; //configuration object
 
 /**
- * Function setting form
+ * Function setting form hidden
  */
 function settingForm() {
     let setting = document.getElementById("target");
     let form = document.getElementById("hidden-setting");
 
     setting.addEventListener("click", function () {
-    form.classList.toggle("hidden");
-    });    
+        form.classList.toggle("hidden");
+    });
 };
 
 settingForm();
@@ -24,25 +26,32 @@ settingForm();
 const weeks = document.getElementById('weeks-setting');
 const weeklyProduction = document.getElementById('weekly-production-setting');
 const weeklyDuration = document.getElementById('weekly-duration-setting');
-const checkThreshold= document.getElementById('check-threshold-setting');
+const checkThreshold = document.getElementById('check-threshold-setting');
 const dateOffset = document.getElementById('date-offset-setting');
+const title = document.querySelectorAll('h5');
 
 /**
  * Function validation form
  * @param {element}  
  * @param {minore}  
- * @param {maggiore } 
+ * @param {maggiore} 
  * @param {child} 
  */
 function controlNumber(element, minore, maggiore, child) {
-    if((/\D|^0/gi.test(element.value))) {
+    if ((/\D|^0/gi.test(element.value))) {
         document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero compreso tra ' + minore + ' e ' + maggiore;
-    } 
-    else if (element.value <= minore) {
+        return false;
+    }
+    else if (element.value < minore) {
         document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero compreso tra ' + minore + ' e ' + maggiore;
+        return false;
     }
     else if (element.value > maggiore) {
         document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero minore di ' + maggiore;
+        return false;
+    }
+    else {
+        return true;
     }
 };
 
@@ -50,8 +59,7 @@ function controlNumber(element, minore, maggiore, child) {
  * Function cancel
  * Reset all the h5 in the form
  */
-function cancel () {
-    let title = document.querySelectorAll('h5');
+function cancel() {
     title.forEach(element => {
         element.textContent = "";
     });
@@ -64,17 +72,23 @@ function cancel () {
 function validation() {
     cancel();
 
-    controlNumber(weeks, 1, 10, 1);
+    controlNumber(weeks, 0, 10, 1);
     controlNumber(weeklyProduction, 1, 5, 2);
     controlNumber(weeklyDuration, 1, 10, 3);
     controlNumber(checkThreshold, 1, 10, 4);
-    controlNumber(dateOffset, 1, 10, 6);
+    controlNumber(dateOffset, 1, 10, 5);
+
+    if (controlNumber(weeks, 1, 10, 1)
+    && controlNumber(weeklyProduction, 1, 5, 2)
+    && controlNumber(weeklyDuration, 1, 10, 3)
+    && controlNumber(checkThreshold, 1, 10, 4)
+    && controlNumber(dateOffset, 1, 10, 5)) {
+        cnf.weeksRuntime = weeks.value;
+        cnf.newItemsPerWeek = weeklyProduction.value;
+        cnf.shelfLife = checkThreshold.value;
+        cnf.startingOffset = dateOffset.value;
+    };
 };
 
-function start() {
-    
-}
-
 const button = document.getElementById('submit');
-
 button.addEventListener('click', validation);
