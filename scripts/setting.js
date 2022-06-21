@@ -69,8 +69,11 @@ function validation() {
     controlNumber(weeklyDuration, 1, 10, 3);
     controlNumber(checkThreshold, 1, 10, 4);
     controlNumber(dateOffset, 1, 10, 6);
-
 };
+
+function start() {
+    
+}
 
 const button = document.getElementById('submit');
 
