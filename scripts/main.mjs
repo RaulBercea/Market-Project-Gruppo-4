@@ -66,17 +66,17 @@ let init = () => {
   });
 
   let tableMove = () => {
-    console.log(currentWeek)
+    fng.clearTable(mainTable);
+    fng.clearTable(tableFiltered);
     if (currentWeek < runtime) {
-      init()
       currentWeek++;
+      init();
     }
-  }
+    console.log(currentWeek);
+  };
 
-  global.backButton.addEventListener("click", tableMove);
-  global.forwardButton.addEventListener("click", tableMove);
-
-
+  global.backButton.addEventListener("mousedown", tableMove);
+  global.forwardButton.addEventListener("mousedown", tableMove);
 };
 
 init();
