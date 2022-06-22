@@ -147,3 +147,7 @@ button:active {
 	flex-direction: row;
 	align-items: center;
 }
+
+.visible {
+	visibility: hidden;
+}

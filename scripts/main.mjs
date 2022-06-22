@@ -12,6 +12,7 @@ import * as fn from "./functions.mjs"; //main functions used to run the program
 import * as fng from "./functionGUI.mjs"; //main functions used to for the GUI
 import * as set from "./setting.mjs"; //main functions used to for the GUI
 import { itemNames } from "./itemsNames.mjs"; //array with a list of all possible item names
+import * as global from "./globals.mjs";
 
 let isRunning = false;
 
@@ -21,17 +22,11 @@ let init = () => {
   let startDate = new Date();
   let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
 
-  // the unfiltered table
-  let mainTable = document.getElementById("table-content");
-
-  // the fitered table
-  let tableFiltered = document.getElementById("table-content-filtered");
-
   let currentDate = fn.addDays(startDate, cnf.startingOffset);
-  let weeks = [];// aray wich will hold the items divided by week
-  let items = [];//	array which will hold the items
+  let weeks = []; // aray wich will hold the items divided by week
+  let items = []; //	array which will hold the items
   let filteredWeek = [];
-  let currentWeek = 0;// the index of the current week in the week array
+  let currentWeek = 0; // the index of the current week in the week array
 
   let startConfig = {
     itemNames,
@@ -40,6 +35,12 @@ let init = () => {
     currentDate,
     shelfLife: cnf.shelfLife,
   };
+
+  // the unfiltered table
+  let mainTable = document.getElementById("table-content");
+
+  // the fitered table
+  let tableFiltered = document.getElementById("table-content-filtered");
 
   // Add new items
   items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
@@ -64,9 +65,18 @@ let init = () => {
     fn.updateState(item, currentDate, cnf.shelfLife);
   });
 
+  let tableMove = () => {
+    console.log(currentWeek)
+    if (currentWeek < runtime) {
+      init()
+      currentWeek++;
+    }
+  }
+
+  global.backButton.addEventListener("click", tableMove);
+  global.forwardButton.addEventListener("click", tableMove);
 
 
-
-}
+};
 
 init();
