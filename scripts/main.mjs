@@ -41,21 +41,24 @@ let init = () => {
     shelfLife: cnf.shelfLife,
   };
 
-  // 1) Add new items
+  // Add new items
   items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
 
+  // add the items to the array containing all the items
   weeks.push(items);
   fng.printItems(mainTable, weeks[currentWeek]);
-  // 2) Filter the items and print the filtered list
+
+  // Filter the items
   items = items.filter(fn.checkItem);
 
-  // 4) adding the items to the filtered array
+  // adding the filtered items to the filtered array
   filteredWeek.push(items);
   fng.printItems(tableFiltered, filteredWeek[currentWeek]);
-  // 4) Add days to the current date
+
+  // Add days to the current date
   currentDate = fn.addDays(currentDate, cnf.daysInWeek);
 
-  // 5) Update the items (state and checks)
+  // Update the items (state and checks)
   items.forEach((item) => {
     fn.updateChecks(item);
     fn.updateState(item, currentDate, cnf.shelfLife);
