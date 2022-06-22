@@ -45,12 +45,13 @@ let init = () => {
   items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
 
   weeks.push(items);
-  // 3) Filter the items and print the filtered list
+  fng.printItems(mainTable, weeks[currentWeek]);
+  // 2) Filter the items and print the filtered list
   items = items.filter(fn.checkItem);
-  console.log(items)
-  // 4)
-  filteredWeek.push(items);
 
+  // 4) adding the items to the filtered array
+  filteredWeek.push(items);
+  fng.printItems(tableFiltered, filteredWeek[currentWeek]);
   // 4) Add days to the current date
   currentDate = fn.addDays(currentDate, cnf.daysInWeek);
 
@@ -60,8 +61,8 @@ let init = () => {
     fn.updateState(item, currentDate, cnf.shelfLife);
   });
 
-  fng.printItems(mainTable, weeks[currentWeek]);
-  fng.printItems(tableFiltered, filteredWeek[currentWeek]);
+
+
 
 }
 
