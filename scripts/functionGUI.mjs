@@ -43,3 +43,4 @@ export let printItems = (table, items) => {
     table.appendChild(tableRow);
   });
 };
+
