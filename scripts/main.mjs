@@ -72,6 +72,7 @@ let init = () => {
       currentWeek++;
       init();
     }
+    
     console.log(currentWeek);
   };
 
