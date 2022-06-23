@@ -34,6 +34,15 @@ export let printItems = (table, items) => {
     tdStateEl.appendChild(tdStateText);
     tdStateEl.classList.add("status-body");
     tableRow.appendChild(tdStateEl);
+    if (items.state === "New") {
+      tdStateEl.classList.add("new");
+    }
+    if (items.state === "Valid") {
+      tdStateEl.classList.add("valid");
+    }
+    if (items.state === "Old") {
+      tdStateEl.classList.add("old");
+    }
     if (items.state === "Expired") {
       tdStateEl.classList.add("expired");
     }

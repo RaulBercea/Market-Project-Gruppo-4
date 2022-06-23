@@ -149,8 +149,19 @@ button:active {
 }
 
 .expired{
-	color: red;
+	background-color: rgba(255, 0, 0, 0.301);
 }
+.old{
+	background-color: rgba(255, 136, 0, 0.288);
+}
+
+.new{
+	background-color: rgba(31, 214, 14, 0.281);
+}
+.valid{
+	background-color: rgba(92, 250, 113, 0.267);
+}
+
 
 .visible {
 	visibility: hidden;
