@@ -129,6 +129,8 @@ let init = () => {
     tableMove("--");// make the week go back
     toggleButton();// toggle the button if at the minimum
   });
+
+  // event listener for the forward button
   global.forwardButton.addEventListener("mousedown", () => {
     tableMove("++");// make the week go back
     toggleButton();// toggle the button if at the minimum
