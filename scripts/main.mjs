@@ -1,6 +1,6 @@
 /**
  * @file main.mjs
- * @authors Nemanja Gajicic, Pietro Milanese, Jacopo Trompeo, Davide Murroni
+ * @authors Raul Bercea, Gabriele Bovolenta, Pietro Milanese, Joele Melchiorre, Dario DiMaria
  * Main file used to run the program
  *
  * This file imports functions and variables from the other files in the project
