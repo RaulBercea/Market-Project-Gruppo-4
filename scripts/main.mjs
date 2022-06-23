@@ -27,7 +27,7 @@ let init = () => {
   let weeks = [];// aray wich will hold the items divided by week
   let items = [];//	array which will hold the items
   let filteredWeek = [];
-  let currentWeek = 3;// the index of the current week in the week array
+  let currentWeek = 0;// the index of the current week in the week array
 
   let startConfig = {
     itemNames,
@@ -43,12 +43,13 @@ let init = () => {
       items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
 
       weeks.push(items);
-      
+      fng.printItems(mainTable, weeks[i]);
       // 3) Filter the items and print the filtered list
       items = items.filter(fn.checkItem);
      
       // 4)
       filteredWeek.push(items.filter(fn.checkItem));
+      fng.printItems(tableFiltered, filteredWeek[i]);
       
       // 4) Add days to the current date
       currentDate = fn.addDays(currentDate, cnf.daysInWeek);
@@ -61,7 +62,5 @@ let init = () => {
   }
     console.log(filteredWeek);
     
-    fng.printItems(mainTable, weeks[currentWeek]);
-    fng.printItems(tableFiltered, filteredWeek[currentWeek]);
 };
 init();

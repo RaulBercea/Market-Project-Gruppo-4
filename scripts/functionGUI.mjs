@@ -30,10 +30,11 @@ export let printItems = (table, items) => {
 
     let tdStateEl = document.createElement("td");
     let tdStateText = document.createTextNode(items.state);
+  
     tdStateEl.appendChild(tdStateText);
     tdStateEl.classList.add("status-body");
     tableRow.appendChild(tdStateEl);
-
+  
     let tdChecksEl = document.createElement("td");
     let tdChecksText = document.createTextNode(items.checks);
     tdChecksEl.appendChild(tdChecksText);
