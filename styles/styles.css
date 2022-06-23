@@ -151,3 +151,16 @@ button:active {
 .visible {
 	visibility: hidden;
 }
+
+.settings {
+	width: 50%;
+	margin: auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	border: 1px solid var(--black);
+}
+
+.settings * {
+	display: inline-block;
+}
