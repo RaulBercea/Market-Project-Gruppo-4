@@ -34,6 +34,9 @@ export let printItems = (table, items) => {
     tdStateEl.appendChild(tdStateText);
     tdStateEl.classList.add("status-body");
     tableRow.appendChild(tdStateEl);
+    if (items.state === "Expired") {
+      tdStateEl.classList.add("expired");
+    }
   
     let tdChecksEl = document.createElement("td");
     let tdChecksText = document.createTextNode(items.checks);
@@ -52,3 +55,5 @@ export let clearTable = (tableBody) => {
     tableBody.removeChild(tableBody.firstChild);
   }
 }
+
+
