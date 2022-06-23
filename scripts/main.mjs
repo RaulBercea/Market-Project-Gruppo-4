@@ -14,8 +14,6 @@ import * as set from "./setting.mjs"; //main functions used to for the GUI
 import { itemNames } from "./itemsNames.mjs"; //array with a list of all possible item names
 import * as global from "./globals.mjs";
 
-let isRunning = false;
-
 let init = () => {
   let runtime = cnf.weeksRuntime;
   //startDate and endDate define the range of the generated items' expiry dates
@@ -27,6 +25,8 @@ let init = () => {
   let items = []; //	array which will hold the items
   let filteredWeek = [];
   let currentWeek = 0; // the index of the current week in the week array
+
+  let hasReachedLimit = false;
 
   let startConfig = {
     itemNames,
@@ -42,41 +42,69 @@ let init = () => {
   // the fitered table
   let tableFiltered = document.getElementById("table-content-filtered");
 
-  // Add new items
-  items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
+  let addTableOfItems = () => {
+    // Add new items
+    items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
 
-  // add the items to the array containing all the items
-  weeks.push(items);
-  fng.printItems(mainTable, weeks[currentWeek]);
-
-  // Filter the items
-  items = items.filter(fn.checkItem);
-
-  // adding the filtered items to the filtered array
-  filteredWeek.push(items);
-  fng.printItems(tableFiltered, filteredWeek[currentWeek]);
-
-  // Add days to the current date
-  currentDate = fn.addDays(currentDate, cnf.daysInWeek);
-
-  // Update the items (state and checks)
-  items.forEach((item) => {
-    fn.updateChecks(item);
-    fn.updateState(item, currentDate, cnf.shelfLife);
-  });
-
-  let tableMove = () => {
-    fng.clearTable(mainTable);
-    fng.clearTable(tableFiltered);
-    if (currentWeek < runtime) {
-      currentWeek++;
-      init();
-    }
+    weeks.push(items);
     console.log(currentWeek);
+    fng.printItems(mainTable, weeks[currentWeek]);
+
+    items = items.filter(fn.checkItem);
+    filteredWeek.push(items);
+    fng.printItems(tableFiltered, filteredWeek[currentWeek]);
+
+    // Add days to the current date
+    currentDate = fn.addDays(currentDate, cnf.daysInWeek);
+
+    items.forEach((item) => {
+      fn.updateChecks(item);
+      fn.updateState(item, currentDate, cnf.shelfLife);
+    });
   };
 
-  global.backButton.addEventListener("mousedown", tableMove);
-  global.forwardButton.addEventListener("mousedown", tableMove);
+  addTableOfItems();
+
+  let toggleButton = () => {
+    if (currentWeek === 0) {
+      global.backButton.style.visibility = "hidden";
+    }
+    else if (currentWeek === runtime) {
+      global.forwardButton.style.visibility = "hidden";
+    }
+    else if (currentWeek > 0 && currentWeek < runtime) {
+      global.backButton.style.visibility = "visible";
+      global.forwardButton.style.visibility = "visible";
+    }
+  }
+
+  let tableMove = (direction) => {
+
+    if (currentWeek === runtime) {
+      hasReachedLimit = true;
+    }
+
+    if (direction === "++" && !global.hasReachedLimit) {
+      fng.clearTable(mainTable);
+      fng.clearTable(tableFiltered);
+      currentWeek++;
+      addTableOfItems();
+    } else if (direction === "--" && currentWeek > 0) {
+      fng.clearTable(mainTable);
+      fng.clearTable(tableFiltered);
+      currentWeek--;
+      addTableOfItems();
+    }
+  };
+
+  global.backButton.addEventListener("click", () => {
+    tableMove("--");
+    toggleButton();
+  });
+  global.forwardButton.addEventListener("mousedown", () => {
+    tableMove("++");
+    toggleButton();
+  });
 };
 
 init();

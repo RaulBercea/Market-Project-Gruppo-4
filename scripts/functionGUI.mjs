@@ -45,7 +45,6 @@ export let printItems = (table, items) => {
 };
 
 export let clearTable = (tableBody) => {
-
   while (tableBody.firstChild) {
     // This will remove all children within tbody which in your case are <tr> elements
     tableBody.removeChild(tableBody.firstChild);
