@@ -15,7 +15,7 @@ setting.addEventListener("click", function () {
 });
 
 
-const kswee = document.getElementById('weeks-setting');
+const weeks = document.getElementById('weeks-setting');
 const weeklyProduction = document.getElementById('weekly-production-setting');
 
 function validation() {

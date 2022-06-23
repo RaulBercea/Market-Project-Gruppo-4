@@ -3,9 +3,7 @@ import { config as cnf } from "./config.mjs"; //configuration object
 
 //print full product in a raw
 export let printItems = (table, items) => {
- items.forEach(items => {
-  
-
+  items.forEach((items) => {
     let tableRow = document.createElement("tr");
     tableRow.classList.add("table-body");
 
@@ -22,8 +20,10 @@ export let printItems = (table, items) => {
     tableRow.appendChild(tdNameEl);
 
     let tdExpiryEl = document.createElement("td");
-    let tdExpiryText = document.createTextNode(fn.formatDate(items.expiry, cnf));
-    
+    let tdExpiryText = document.createTextNode(
+      fn.formatDate(items.expiry, cnf)
+    );
+
     tdExpiryEl.appendChild(tdExpiryText);
     tdExpiryEl.classList.add("exp-date-body");
     tableRow.appendChild(tdExpiryEl);
@@ -44,3 +44,11 @@ export let printItems = (table, items) => {
     table.appendChild(tableRow);
   });
 };
+
+export let clearTable = (tableBody) => {
+
+  while (tableBody.firstChild) {
+    // This will remove all children within tbody which in your case are <tr> elements
+    tableBody.removeChild(tableBody.firstChild);
+  }
+}
