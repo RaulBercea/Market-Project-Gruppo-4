@@ -26,8 +26,6 @@ let init = () => {
 
 	let tableArray = [];
 
-	let hasReachedEnd = false;
-
 	let currentWeek = 0; // the index of the current week in the week array
 
 	let startConfig = {
@@ -83,8 +81,11 @@ let init = () => {
 		// checking the status of the items and changing it if necessary
 		checkItems(items);
 
+		tableArray.push(fng.getTableData(global.table));
 
 	};
+
+
 
 	/**
 	 * function that toggles the left and right buttons based on the position of

@@ -49,4 +49,21 @@ export let clearTable = (tableBody) => {
     // This will remove all children within tbody
     tableBody.removeChild(tableBody.firstChild);
   }
-}
+};
+
+// function that gets the data from a table and returns an array of objects
+export let getTableData = (table) => {
+  let tableData = [];
+  let tableRows = table.getElementsByTagName("tr");
+  for (let i = 1; i < tableRows.length; i++) {
+    let tableRow = tableRows[i];
+    let tableDataRow = {};
+    let tableCells = tableRow.getElementsByTagName("td");
+    for (let j = 0; j < tableCells.length; j++) {
+      let tableCell = tableCells[j];
+      tableDataRow[j] = tableCell.innerHTML;
+    }
+    tableData.push(tableDataRow);
+  }
+  return tableData;
+};
