@@ -14,14 +14,15 @@
  import { itemNames } from "./itemsNames.mjs"; //array with a list of all possible item names
  import * as global from "./globals.mjs";
  
- let init = () => {
+ export let init = () => {
    let runtime = cnf.weeksRuntime;
    //startDate and endDate define the range of the generated items' expiry dates
-   let startDate = new Date();
+   let startDate = cnf.startDate;
    console.log(startDate)
    let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
  
    let currentDate = fn.addDays(startDate, cnf.startingOffset);
+   console.log(currentDate);
    let weeks = []; // aray wich will hold the items divided by week
    let items = []; //	array which will hold the items
    let filteredWeek = [];
@@ -136,5 +137,8 @@
    });
  };
  
- init();
+ //init();
+
+ //const button = document.getElementById('start');
+ //button.addEventListener('click', init);
  

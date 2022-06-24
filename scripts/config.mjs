@@ -31,6 +31,7 @@
  * @property {string} yearFormat - used to format the year ("2-digit", "numeric")
  */
 export let config = {
+	startDate: new Date(),
 	daysInWeek: 6,
 	startingOffset: 3,
 	shelfLife: 2,

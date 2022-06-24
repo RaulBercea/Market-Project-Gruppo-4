@@ -232,7 +232,7 @@ export let checkItem = item => item.state === "New" || item.state === "Valid";
  * @returns {Date} the date after the days have been added
  */
 export let addDays = (date, days) => {
-	let result = new Date(date);
+	let result = date;
 	result.setDate(result.getDate() + days);
 	return result;
 };

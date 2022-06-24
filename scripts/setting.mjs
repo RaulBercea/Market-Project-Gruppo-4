@@ -5,6 +5,7 @@
  */
 
 import { config as cnf } from "./config.mjs";
+import  * as int  from "./main.mjs";
 
 // SETTING FORM
 let setting = document.getElementById("target");
@@ -46,13 +47,16 @@ function getData(){
     let weeksDuration = document.getElementById("weekly-duration-setting").value;
     let weeksRuntime = document.getElementById("weeks-setting").value;
     let daysOffset = document.getElementById("date-offset-setting").value;
-    let startDate = document.getElementById("start-date-setting").value;
+    let startDate = document.getElementById("start-date-setting").valueAsDate;
     cnf.newItemsPerWeek = weeklyProducts;
     cnf.daysInWeek = weeksDuration;
     cnf.weeksRuntime = weeksRuntime;
     cnf.startingOffset = daysOffset;
+    cnf.startDate = startDate;
     console.log(startDate);
     console.log(cnf);
+    int.init();
+    
 }
 
 button.addEventListener('click', getData);
