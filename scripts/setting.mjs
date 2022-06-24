@@ -16,7 +16,7 @@ setting.addEventListener("click", function () {
 
 
 const weeks = document.getElementById('weeks-setting');
-const weeklyProduction = document.getElementById('weekly-production-setting');
+const weeklyProduction = document.getElementById('weekly-products-setting');
 
 function validation() {
     controlNumber(weeks, 1, 10, 1);
@@ -40,4 +40,19 @@ function controlNumber(element, minore, maggiore, child) {
 
 const button = document.getElementById('submit');
 
-button.addEventListener('click', validation);
+function getData(){
+    validation();
+    let weeklyProducts = document.getElementById("weekly-products-setting").value;
+    let weeksDuration = document.getElementById("weekly-duration-setting").value;
+    let weeksRuntime = document.getElementById("weeks-setting").value;
+    let daysOffset = document.getElementById("date-offset-setting").value;
+    let startDate = document.getElementById("start-date-setting").value;
+    cnf.newItemsPerWeek = weeklyProducts;
+    cnf.daysInWeek = weeksDuration;
+    cnf.weeksRuntime = weeksRuntime;
+    cnf.startingOffset = daysOffset;
+    console.log(startDate);
+    console.log(cnf);
+}
+
+button.addEventListener('click', getData);

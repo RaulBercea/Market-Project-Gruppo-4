@@ -18,6 +18,7 @@
    let runtime = cnf.weeksRuntime;
    //startDate and endDate define the range of the generated items' expiry dates
    let startDate = new Date();
+   console.log(startDate)
    let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
  
    let currentDate = fn.addDays(startDate, cnf.startingOffset);
