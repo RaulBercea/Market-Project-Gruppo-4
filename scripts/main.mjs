@@ -14,21 +14,20 @@
  import { itemNames } from "./itemsNames.mjs"; //array with a list of all possible item names
  import * as global from "./globals.mjs";
  
- export let init = () => {
+ let init = () => {
    let runtime = cnf.weeksRuntime;
    //startDate and endDate define the range of the generated items' expiry dates
-   let startDate = cnf.startDate;
-   console.log(startDate)
+   let startDate = new Date();
    let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
- 
    let currentDate = fn.addDays(startDate, cnf.startingOffset);
-   console.log(currentDate);
-   let weeks = []; // aray wich will hold the items divided by week
+   const weeks = []; // aray wich will hold the items divided by week
    let items = []; //	array which will hold the items
    let filteredWeek = [];
-   let currentWeek = 0; // the index of the current week in the week array
  
-   let hasReachedLimit = false;
+   let tableArray = [];
+   let filteredArray = [];
+ 
+   let currentWeek = 0; // the index of the current week in the week array
  
    let startConfig = {
      itemNames,
@@ -38,16 +37,29 @@
      shelfLife: cnf.shelfLife,
    };
  
+ 
+ 
    // the unfiltered table
    let mainTable = document.getElementById("table-content");
  
    // the fitered table
    let tableFiltered = document.getElementById("table-content-filtered");
  
+   let checkItems = (items) => {
+     items.forEach((item) => {
+       fn.updateChecks(item);
+       fn.updateState(item, currentDate, cnf.shelfLife);
+     });
+   };
+ 
    let addTableOfItems = () => {
+     if (weeks.length > runtime) {
+       fng.printTableItems(mainTable, tableArray[currentWeek]);
+       fng.printTableItems(tableFiltered, filteredArray[currentWeek]);
+       return
+     }
      // Add new items
      items.push(...fn.generateItems(cnf.newItemsPerWeek, startConfig));
- 
      // add unfiltered items to the weeks array
      weeks.push(items);
      // printing the unfiltered items on the table in the dom
@@ -63,17 +75,20 @@
      fng.printItems(tableFiltered, filteredWeek[currentWeek]);
  
      // Add days to the current date
-     currentDate = fn.addDays(currentDate, cnf.daysInWeek);
+     if (currentDate != endDate) {
+       currentDate = fn.addDays(currentDate, cnf.daysInWeek);
+     }
  
-     // checking the status of the item and changing it if necessary
-     items.forEach((item) => {
-       fn.updateChecks(item);
-       fn.updateState(item, currentDate, cnf.shelfLife);
-     });
+     // checking the status of the items and changing it if necessary
+     checkItems(items);
+ 
+     if (tableArray.length <= currentWeek) {
+       filteredArray.push(fng.getTableData(global.filteredTable));
+       tableArray.push(fng.getTableData(global.table));
+     }
    };
  
-   // first creation of the table
-   addTableOfItems();
+ 
  
    /**
     * function that toggles the left and right buttons based on the position of
@@ -93,19 +108,16 @@
        global.backButton.style.visibility = "visible";
        global.forwardButton.style.visibility = "visible";
      }
-   }
+   };
  
    /**
     * Function that prints the next or previous week of items
     * @param {String} direction - weather to print the next or previous week
     */
    let tableMove = (direction) => {
-     // check if the maximum number of weeks has been printed
-     if (currentWeek === runtime) {
-       hasReachedLimit = true;
-     }
+ 
      // printing the next week if there is still weeks to be printed
-     if (direction === "++" && !global.hasReachedLimit) {
+     if (direction === "++") {
        // remove the content of the table
        fng.clearTable(mainTable);
        fng.clearTable(tableFiltered);
@@ -126,19 +138,31 @@
      }
    };
  
+   addTableOfItems();
+ 
    // event listener for the click of the back button
-   global.backButton.addEventListener("mousedown", () => {
-     tableMove("--");// make the week go back
-     toggleButton();// toggle the button if at the minimum
+   global.backButton.addEventListener("click", () => {
+     tableMove("--"); // make the week go back
+     fng.weekText(currentWeek + 1);
+     toggleButton(); // toggle the button if at the minimum
    });
-   global.forwardButton.addEventListener("mousedown", () => {
-     tableMove("++");// make the week go back
-     toggleButton();// toggle the button if at the minimum
+ 
+   // event listener for the forward button
+   global.forwardButton.addEventListener("click", () => {
+     tableMove("++"); // make the week go back
+     fng.weekText(currentWeek + 1);
+     toggleButton(); // toggle the button if at the minimum
    });
+ 
+   // triggering the buttons forwards and backwards to populate the array
+   for (let i = 0; i < runtime; i++) {
+     global.forwardButton.dispatchEvent(new Event("click"));
+   }
+   for (let i = runtime; i >= 0; i--) {
+     console.log(filteredArray)
+     global.backButton.dispatchEvent(new Event("click"));
+   }
  };
  
- //init();
-
- //const button = document.getElementById('start');
- //button.addEventListener('click', init);
+ init();
  
