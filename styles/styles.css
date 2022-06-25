@@ -24,11 +24,11 @@ body {
 
 /* Style for the table container */
 .table-container {
+	padding: 40px;
 	width: 80%;
 	margin: 0 auto;
 	background-color: var(--white);
 	border: 1px solid var(--black);
-	padding: 40px;
 	box-shadow: var(--black) 0px 0px 10px;
 }
 
@@ -107,7 +107,7 @@ body {
 .footer {
 	bottom: 0;
 	width: 100%;
-	margin-top: 100px;
+	margin-top: 200px;
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -153,14 +153,7 @@ button:active {
 }
 
 .settings {
-	width: 50%;
+	width: 48%;
 	margin: auto;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
 	border: 1px solid var(--black);
-}
-
-.settings * {
-	display: inline-block;
 }

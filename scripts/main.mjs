@@ -74,6 +74,11 @@ let init = () => {
 		// printing the filtered items to the filtered table in the dom
 		fng.printItems(tableFiltered, filteredWeek[currentWeek]);
 
+		if (tableArray.length <= currentWeek) {
+			filteredArray.push(fng.getTableData(global.filteredTable));
+			tableArray.push(fng.getTableData(global.table));
+		}
+
 		// Add days to the current date
 		if (currentDate != endDate) {
 			currentDate = fn.addDays(currentDate, cnf.daysInWeek);
@@ -82,10 +87,7 @@ let init = () => {
 		// checking the status of the items and changing it if necessary
 		checkItems(items);
 
-		if (tableArray.length <= currentWeek) {
-			filteredArray.push(fng.getTableData(global.filteredTable));
-			tableArray.push(fng.getTableData(global.table));
-		}
+
 	};
 
 
