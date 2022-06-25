@@ -125,7 +125,7 @@ button {
 	color: var(--white);
 	font-weight: bold;
 	border: none;
-	transition: all 100ms ease-in;
+	transition: all 100ms ease-in-out;
 }
 
 /* Changing the background color on hover for the button */
@@ -153,9 +153,78 @@ button:active {
 }
 
 .settings {
-	width: 48%;
 	margin: auto;
+	background-color: var(--white);
 	border: 1px solid var(--black);
+	max-height: 0px;
+	overflow: hidden;
+	transition: all 300ms ease-in-out;
+}
+
+input {
+	width: 100%;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+.toggle-settings {
+	margin-top: 30px;
+	font-size: 1.5rem;
+	display: block;
+	text-align: center;
+	width: 100%;
+	background-color: var(--accent-color-2);
+	color: var(--white);
+	cursor: pointer;
+	padding: 15px;
+}
+
+.toggle-settings::after {
+	content: "+";
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	transition: all 300ms ease-in;
+}
+
+.toggle-settings:hover {
+	background-color: var(--accent-color-1);
+}
+
+.toggle-settings-check:checked + .toggle-settings + .settings {
+	max-height: 100vh;
+}
+
+.toggle-settings-check:checked + .toggle-settings::after {
+	content: "-";
+}
+
+#form {
+	flex: 0 0 100%;
+	display: inline-flex;
+	flex-flow: row wrap;
+}
+
+.settings-wrapper {
+	margin: auto;
+	width: 48%;
+}
+
+.input-wrapper {
+	width: 50%;
+	padding: 10px;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.input-wrapper h5 {
+	display: none;
+}
+
+#submit {
+	width: 100%;
 }
 
 /* Colors for the expiry status */
@@ -172,4 +241,8 @@ button:active {
 
 .valid {
 	background-color: rgba(252, 255, 97, 0.267);
+}
+
+.removed {
+	background-color: rgba(14, 34, 214, 0.281);
 }

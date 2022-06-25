@@ -10,9 +10,9 @@ import { config as cnf } from "./config.mjs";
 let setting = document.getElementById("target");
 let form = document.getElementById("hidden-setting");
 
-setting.addEventListener("click", function () {
-    form.classList.toggle("hidden");
-});
+// setting.addEventListener("click", function () {
+//     form.classList.toggle("hidden");
+// });
 
 
 const weeks = document.getElementById('weeks-setting');
@@ -24,9 +24,9 @@ function validation() {
 }
 
 function controlNumber(element, minore, maggiore, child) {
-    if((/\D|^0/gi.test(element.value))) {
+    if ((/\D|^0/gi.test(element.value))) {
         document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero compreso tra ' + minore + ' e ' + maggiore;
-    } 
+    }
     else if (element.value <= minore) {
         document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero compreso tra ' + minore + ' e ' + maggiore;
     }

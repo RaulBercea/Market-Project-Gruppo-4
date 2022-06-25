@@ -163,6 +163,7 @@ let init = () => {
 	for (let i = runtime; i >= 0; i--) {
 		global.backButton.dispatchEvent(new Event("click"));
 	}
+
 };
 
 init();
