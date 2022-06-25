@@ -29,7 +29,6 @@ export let printItems = (table, items) => {
         tdExpiryEl.classList.add("exp-date-body");
         tableRow.appendChild(tdExpiryEl);
 
-<<<<<<< HEAD
     let tdStateEl = document.createElement("td");
     let tdStateText = document.createTextNode(items.state);
   
@@ -54,19 +53,7 @@ export let printItems = (table, items) => {
     tdChecksEl.appendChild(tdChecksText);
     tdChecksEl.classList.add("checks-body");
     tableRow.appendChild(tdChecksEl);
-=======
-        let tdStateEl = document.createElement("td");
-        let tdStateText = document.createTextNode(items.state);
-        tdStateEl.appendChild(tdStateText);
-        tdStateEl.classList.add("status-body");
-        tableRow.appendChild(tdStateEl);
 
-        let tdChecksEl = document.createElement("td");
-        let tdChecksText = document.createTextNode(items.checks);
-        tdChecksEl.appendChild(tdChecksText);
-        tdChecksEl.classList.add("checks-body");
-        tableRow.appendChild(tdChecksEl);
->>>>>>> raul-feature
 
         table.appendChild(tableRow);
     });
@@ -122,7 +109,6 @@ export let printTableItems = (table, tableItems) => {
  * @param {Object} tableBody - the table to be cleared
  */
 export let clearTable = (tableBody) => {
-<<<<<<< HEAD
   while (tableBody.firstChild) {
     // This will remove all children within tbody which in your case are <tr> elements
     tableBody.removeChild(tableBody.firstChild);
@@ -130,39 +116,3 @@ export let clearTable = (tableBody) => {
 }
 
 
-=======
-    while (tableBody.firstChild) {
-        // This will remove all children within tbody
-        tableBody.removeChild(tableBody.firstChild);
-    }
-};
-
-/**
- * Function that turns a table from the dom into an array
- * @param {Object} table - the table from the dom
- * @returns the table as a bi-dimensional array
- */
-export let getTableData = (table) => {
-    let tableData = [];
-    let tableRows = table.getElementsByTagName("tr");
-    for (let i = 1; i < tableRows.length; i++) {
-        let tableRow = tableRows[i];
-        let tableDataRow = {};
-        let tableCells = tableRow.getElementsByTagName("td");
-        for (let j = 0; j < tableCells.length; j++) {
-            let tableCell = tableCells[j];
-            tableDataRow[j] = tableCell.innerHTML;
-        }
-        tableData.push(tableDataRow);
-    }
-    return tableData;
-};
-
-/**
- * Function that changes the week count in the dom
- * @param {Number} week - the current value of the week
- */
-export let weekText = (week) => {
-    global.weekText.innerText = `Week ${week}`;
-};
->>>>>>> raul-feature
