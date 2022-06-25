@@ -15,7 +15,7 @@ import { itemNames } from "./itemsNames.mjs"; //array with a list of all possibl
 import * as global from "./globals.mjs";
 
 let init = () => {
-	let runtime = cnf.weeksRuntime;
+	let runtime = cnf.weeksRuntime - 1;
 	//startDate and endDate define the range of the generated items' expiry dates
 	let startDate = new Date();
 	let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
@@ -75,8 +75,8 @@ let init = () => {
 		fng.printItems(tableFiltered, filteredWeek[currentWeek]);
 
 		if (tableArray.length <= currentWeek) {
-			filteredArray.push(fng.getTableData(global.filteredTable));
 			tableArray.push(fng.getTableData(global.table));
+			filteredArray.push(fng.getTableData(global.filteredTable));
 		}
 
 		// Add days to the current date
@@ -161,7 +161,6 @@ let init = () => {
 		global.forwardButton.dispatchEvent(new Event("click"));
 	}
 	for (let i = runtime; i >= 0; i--) {
-		console.log(filteredArray)
 		global.backButton.dispatchEvent(new Event("click"));
 	}
 };

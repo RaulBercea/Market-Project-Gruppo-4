@@ -33,7 +33,6 @@ export let printItems = (table, items) => {
         let tdStateText = document.createTextNode(items.state);
 
         tdStateEl.appendChild(tdStateText);
-
         tdStateEl.classList.add("status-body");
 
 
@@ -82,7 +81,20 @@ export let printTableItems = (table, tableItems) => {
         let tdStateEl = document.createElement("td");
         let tdStateText = document.createTextNode(tableItems[key][3]);
         tdStateEl.appendChild(tdStateText);
-        tdStateEl.classList.add("status-body");
+
+        // color for the expiry status
+        if (tableItems[key][3] === "New") {
+            tdStateEl.classList.add("new");
+        }
+        if (tableItems[key][3] === "Valid") {
+            tdStateEl.classList.add("valid");
+        }
+        if (tableItems[key][3] === "Old") {
+            tdStateEl.classList.add("old");
+        }
+        if (tableItems[key][3] === "Expired") {
+            tdStateEl.classList.add("expired");
+        }
         tableRow.appendChild(tdStateEl);
 
         let tdChecksEl = document.createElement("td");
@@ -114,15 +126,20 @@ export let clearTable = (tableBody) => {
 export let getTableData = (table) => {
     let tableData = [];
     let tableRows = table.getElementsByTagName("tr");
-    for (let i = 1; i < tableRows.length; i++) {
+    for (let i = 0; i < tableRows.length; i++) {
         let tableRow = tableRows[i];
         let tableDataRow = {};
         let tableCells = tableRow.getElementsByTagName("td");
         for (let j = 0; j < tableCells.length; j++) {
             let tableCell = tableCells[j];
-            tableDataRow[j] = tableCell.innerHTML;
+            if (tableCell.innerText !== "undefined") {
+                tableDataRow[j] = tableCell.innerText;
+            }
         }
-        tableData.push(tableDataRow);
+        // checks if the row is empty
+        if (Object.entries(tableDataRow).length !== 0) {
+            tableData.push(tableDataRow);
+        }
     }
     return tableData;
 };

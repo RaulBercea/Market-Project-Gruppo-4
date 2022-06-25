@@ -158,16 +158,18 @@ button:active {
 	border: 1px solid var(--black);
 }
 
+/* Colors for the expiry status */
 .expired {
 	background-color: rgba(255, 0, 0, 0.301);
 }
 .old {
-	background-color: rgba(255, 136, 0, 0.288);
+	background-color: rgba(214, 114, 0, 0.288);
 }
 
 .new {
 	background-color: rgba(31, 214, 14, 0.281);
 }
+
 .valid {
-	background-color: rgba(92, 250, 113, 0.267);
+	background-color: rgba(252, 255, 97, 0.267);
 }
