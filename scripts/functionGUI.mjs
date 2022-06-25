@@ -55,6 +55,7 @@ export let printItems = (table, items) => {
     tableRow.appendChild(tdChecksEl);
 
 
+
         table.appendChild(tableRow);
     });
 };
