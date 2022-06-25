@@ -25,6 +25,7 @@ let init = () => {
 	let filteredWeek = [];
 
 	let tableArray = [];
+	let filteredArray = [];
 
 	let currentWeek = 0; // the index of the current week in the week array
 
@@ -53,8 +54,8 @@ let init = () => {
 
 	let addTableOfItems = () => {
 		if (weeks.length > runtime) {
-			fng.printItems(mainTable, weeks[currentWeek]);
-			fng.printItems(tableFiltered, filteredWeek[currentWeek]);
+			fng.printTableItems(mainTable, tableArray[currentWeek]);
+			fng.printTableItems(tableFiltered, filteredArray[currentWeek]);
 			return
 		}
 		// Add new items
@@ -81,8 +82,10 @@ let init = () => {
 		// checking the status of the items and changing it if necessary
 		checkItems(items);
 
-		tableArray.push(fng.getTableData(global.table));
-
+		if (tableArray.length <= currentWeek) {
+			filteredArray.push(fng.getTableData(global.filteredTable));
+			tableArray.push(fng.getTableData(global.table));
+		}
 	};
 
 
@@ -135,19 +138,30 @@ let init = () => {
 		}
 	};
 
+	addTableOfItems();
+
 	// event listener for the click of the back button
 	global.backButton.addEventListener("click", () => {
 		tableMove("--"); // make the week go back
+		fng.weekText(currentWeek + 1);
 		toggleButton(); // toggle the button if at the minimum
 	});
 
 	// event listener for the forward button
 	global.forwardButton.addEventListener("click", () => {
 		tableMove("++"); // make the week go back
+		fng.weekText(currentWeek + 1);
 		toggleButton(); // toggle the button if at the minimum
 	});
 
-	addTableOfItems();
+	// triggering the buttons forwards and backwards to populate the array
+	for (let i = 0; i < runtime; i++) {
+		global.forwardButton.dispatchEvent(new Event("click"));
+	}
+	for (let i = runtime; i >= 0; i--) {
+		console.log(filteredArray)
+		global.backButton.dispatchEvent(new Event("click"));
+	}
 };
 
 init();
