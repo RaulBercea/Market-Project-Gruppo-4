@@ -13,15 +13,36 @@ When the product becomes expired it is removed from inventory.
 By means of the buttons it is possible to browse the history of the weeks with the various products.
 # Configuration and technical characteristics
 
-The index file contains the source code of the main html page.
-The script folder contains the Javascript files that allow the site to generate products and dates and distribute them on the calendar.
+
 # Files and project structure
 
+The index file contains the source code of the main html page.
+The script folder contains the Javascript files that allow the site to generate products and dates and distribute them on the calendar.
+The styles folder instead contains the css codes for the style and layout of the main html.
 
+''' img/
+     flower-icon.svg
+    scripts/
+     config.mjs
+     functionGUI.mjs
+     function.mjs
+     itemsNames.mjs
+     main.mjs
+     settings.mjs
+    styles/
+     modern-reset.css
+     styles.css
+    index.html
+    license
+    .gitattributes
+    readme.md'''
 # Features delivered
 
 # Bonuses delivered
 
+Bonus 1: ---
+
+Bonus 2: ---
 # Browser compatibility
 - Chrome v. 103.0.5060.53: tested and compatible
 - Opera v. 87.0.4390.45: tested and compatible
@@ -36,6 +57,8 @@ Copyright(c) 2022 - Group 04; All rights reserved.
 # Authors
 
 Raul Bercea, Petro Milanese, Gabriele Bovolenta, Dario Di Maria, Joele Melchiorre
+
+raul.bercea@edu.itspiemonte.it; pietro.milanese@edu.itspiemonte.it; gabriele.bovolenta@edu.itspiemonte.it; dario.dimaria@edu.itspiemonte.it; joele.melchiorre@edu.itspiemonte.it
 # Changelog and version history
 
 # Other information
