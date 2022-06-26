@@ -12,7 +12,7 @@ import * as fn from "./functions.mjs"; //main functions used to run the program
 import * as fng from "./functionGUI.mjs"; //main functions used to for the GUI
 import * as set from "./setting.mjs"; //main functions used to for the GUI
 import { itemNames } from "./itemsNames.mjs"; //array with a list of all possible item names
-import * as global from "./globals.mjs";
+import * as global from "./globals.mjs"; //holds all the global variables in the project
 
 let init = () => {
   // the ammount of time the program runs for
@@ -164,6 +164,8 @@ global.settingsSubmit.addEventListener("click", () => {
   if (valid) {
     fng.clearTable(global.mainTable);
     fng.clearTable(global.tableFiltered);
+    document.getElementById("toggle-settings-check").checked = false;
+
     init(); // reinitializing the program
   }
 });
