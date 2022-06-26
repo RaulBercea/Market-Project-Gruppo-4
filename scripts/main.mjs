@@ -135,7 +135,9 @@ let init = () => {
   // event listener for the click of the back button
   global.backButton.addEventListener("click", () => {
     tableMove("--"); // make the week go back
-    fng.weekText(currentWeek + 1);
+    if (currentWeek > 0) {
+      fng.weekText(currentWeek - 1);
+    }
     toggleButton(); // toggle the button if at the minimum
   });
 
