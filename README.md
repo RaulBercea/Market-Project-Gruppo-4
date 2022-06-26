@@ -38,6 +38,12 @@ The styles folder instead contains the css codes for the style and layout of the
     readme.md'''
 # Features delivered
 
+- Expired products are automatically removed from the shelf.
+- Products that have remained on the shelf for too long are removed even if they are not expired as they are now old.
+- A certain number of products arrive in the market every week.
+- The program starts working from the current date or after a possible period, if appropriately specified in the code.
+- The site calculates and prints the list every week, after a short preset time.
+- The variables that establish the number of incoming products, the start and end date of the program, the print time span are all configurable in the JavaScript file.
 # Bonuses delivered
 
 Bonus 1: ---
@@ -51,6 +57,7 @@ Bonus 2: ---
 
 # External resources
 
+No external resources were used, the only thing to report is the use of webpack
 # License and contact information
 
 Copyright(c) 2022 - Group 04; All rights reserved.
@@ -62,3 +69,4 @@ raul.bercea@edu.itspiemonte.it; pietro.milanese@edu.itspiemonte.it; gabriele.bov
 # Changelog and version history
 
 # Other information
+---
