@@ -15,12 +15,13 @@ import { itemNames } from "./itemsNames.mjs"; //array with a list of all possibl
 import * as global from "./globals.mjs";
 
 let init = () => {
+  // the ammount of time the program runns for
   let runtime = cnf.weeksRuntime - 1;
   //startDate and endDate define the range of the generated items' expiry dates
   let startDate = new Date();
   let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
   let currentDate = fn.addDays(startDate, cnf.startingOffset);
-  const weeks = []; // aray wich will hold the items divided by week
+  let weeks = []; // aray wich will hold the items divided by week
   let items = []; //	array which will hold the items
   let filteredWeek = [];
 
@@ -28,14 +29,6 @@ let init = () => {
   let filteredArray = [];
 
   let currentWeek = 0; // the index of the current week in the week array
-
-  let startConfig = {
-    itemNames,
-    startDate,
-    endDate,
-    currentDate,
-    shelfLife: cnf.shelfLife,
-  };
 
   // the unfiltered table
   let mainTable = document.getElementById("table-content");
@@ -50,7 +43,16 @@ let init = () => {
     });
   };
 
+  let startConfig = {
+    itemNames,
+    startDate,
+    endDate,
+    currentDate,
+    shelfLife: cnf.shelfLife,
+  };
+
   let addTableOfItems = () => {
+
     if (weeks.length > runtime) {
       fng.printTableItems(mainTable, tableArray[currentWeek]);
       fng.printTableItems(tableFiltered, filteredArray[currentWeek]);
@@ -161,11 +163,10 @@ let init = () => {
   global.settingsSubmit.addEventListener("click", () => {
     let valid = set.validate(); // validating inputs
     set.updateConfig(valid); // updating the configuration
+    if (valid) {
+      init(); // reinitializing the program
+    }
     console.log(cnf);
-    // clearing the table
-    fng.clearTable(mainTable);
-    fng.clearTable(tableFiltered);
-    // resetting the week counter
   });
 };
 
