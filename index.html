@@ -23,7 +23,7 @@
 			</div>
 			<h1>Inventory Management System</h1>
 		</div>
-
+		<!-- Container for the settings pannel -->
 		<div class="settings-wrapper">
 			<input
 				type="checkbox"
@@ -37,56 +37,61 @@
 			<div id="settings" class="settings">
 				<form action="..." id="form">
 					<div class="input-wrapper">
-						<h5></h5>
 						<label for="days-in-week-setting">Days in Week</label>
 						<input
 							type="number"
 							id="days-in-week-setting"
-							placeholder="14"
+							placeholder="a number 1 to 7"
+							maxlength="2"
 						/>
+						<h5></h5>
 					</div>
 					<div class="input-wrapper">
-						<h5></h5>
 						<label for="starting-offset-setting"
 							>Starting Offset</label
 						>
 						<input
 							type="number"
 							id="starting-offset-setting"
-							placeholder="6"
+							placeholder="a number from 0 to 30"
+							maxlength="2"
 						/>
+						<h5></h5>
 					</div>
 					<div class="input-wrapper">
-						<h5></h5>
 						<label for="shelf-life-setting">Shelf Life</label>
 						<input
 							type="number"
 							id="shelf-life-setting"
-							placeholder="3"
+							placeholder="a number from 1 to 30"
+							maxlength="2"
 						/>
+						<h5></h5>
 					</div>
 					<div class="input-wrapper">
-						<h5></h5>
 						<label for="items-per-week-setting"
 							>Items per Week</label
 						>
 						<input
 							type="number"
 							id="items-per-week-setting"
-							placeholder="3"
+							placeholder="a number from 1 to 20"
+							maxlength="2"
 						/>
+						<h5></h5>
 					</div>
 					<div class="input-wrapper">
-						<h5></h5>
 						<label for="runtime-setting">Runtime</label>
 						<input
 							type="number"
 							id="runtime-setting"
 							placeholder="5"
+							maxlength="2"
 						/>
+						<h5></h5>
 					</div>
 				</form>
-				<button id="submit">submit</button>
+				<button id="submit">Save</button>
 			</div>
 		</div>
 
