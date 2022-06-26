@@ -50,15 +50,18 @@ body {
 	font-size: 1rem;
 }
 
+/* Width of the main table */
 .main-table {
 	width: 100%;
 }
 
+/* Color and with of the table header */
 .table-header {
 	width: 100%;
 	background-color: var(--accent-color-2);
 }
 
+/* Style for the table header cells */
 .table-header th {
 	text-align: left;
 	padding: 5px;
@@ -66,14 +69,17 @@ body {
 	font-size: 1rem;
 }
 
+/* Width of the table body */
 .table-body {
 	width: 100%;
 }
 
+/* Style for the table body cells */
 .table-body td {
 	padding: 5px;
 }
 
+/* Giving the table rows a "zebra-stripe" pattern */
 .table-body:nth-last-of-type(odd) {
 	background-color: var(--grey);
 }
@@ -92,13 +98,16 @@ body {
 	box-shadow: var(--black) 0px 0px 10px;
 }
 
+/* Style for the logo svg image */
 .logo-image {
 	width: 50px;
 	height: 50px;
+	/* Filter changes the color of the svg */
 	filter: invert(87%) sepia(22%) saturate(156%) hue-rotate(266deg)
 		brightness(109%) contrast(105%);
 }
 
+/* Making the logo (text and image) display as flex */
 .logo {
 	display: flex;
 }
@@ -118,6 +127,7 @@ body {
 	box-shadow: var(--black) 0px 0px 10px;
 }
 
+/* Style for the buttons in the page */
 button {
 	width: 70px;
 	height: 50px;
@@ -148,10 +158,7 @@ button:active {
 	align-items: center;
 }
 
-.visible {
-	visibility: hidden;
-}
-
+/* Style for the settings pane */
 .settings {
 	margin: auto;
 	background-color: var(--white);
@@ -161,14 +168,17 @@ button:active {
 	transition: all 300ms ease-in-out;
 }
 
+/* Making the inputs fill the width of the  */
 input {
 	width: 100%;
 }
 
+/* Making the checkbox that toggles the settings invisible */
 input[type="checkbox"] {
 	display: none;
 }
 
+/* Style for the label that toggles the settings */
 .toggle-settings {
 	margin-top: 30px;
 	font-size: 1.5rem;
@@ -181,6 +191,7 @@ input[type="checkbox"] {
 	padding: 15px;
 }
 
+/* Addoing a + sign after the text in the label */
 .toggle-settings::after {
 	content: "+";
 	display: inline-block;
@@ -189,29 +200,35 @@ input[type="checkbox"] {
 	transition: all 300ms ease-in;
 }
 
+/* Changing the color of the settings label bg on hover */
 .toggle-settings:hover {
 	background-color: var(--accent-color-1);
 }
 
+/* Expanding the settings when the checkbox is checked */
 .toggle-settings-check:checked + .toggle-settings + .settings {
 	max-height: 100vh;
 }
 
+/* When the checkbox is checked make change the label sign from + to - */
 .toggle-settings-check:checked + .toggle-settings::after {
 	content: "-";
 }
 
+/* Style for the form */
 #form {
 	flex: 0 0 100%;
 	display: inline-flex;
 	flex-flow: row wrap;
 }
 
+/* Style for the wrapper of the settings pane */
 .settings-wrapper {
 	margin: auto;
 	width: 48%;
 }
 
+/* Style for the container of each input with it's label and the hidden mesage field */
 .input-wrapper {
 	width: 50%;
 	padding: 10px;
@@ -220,12 +237,14 @@ input[type="checkbox"] {
 	margin-bottom: 10px;
 }
 
+/* Style for the error messages */
 .input-wrapper h5 {
 	margin: 0;
 	height: 25px;
 	color: var(--accent-color-2);
 }
 
+/* Style for the submit button */
 #submit {
 	width: 100%;
 }
