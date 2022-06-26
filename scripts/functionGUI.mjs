@@ -1,153 +1,154 @@
 import * as fn from "./functions.mjs";
 import { config as cnf } from "./config.mjs"; //configuration object
+import * as global from "./globals.mjs";
 
 //print full product in a raw
 export let printItems = (table, items) => {
-  items.forEach((element) => {
-    let tableRow = document.createElement("tr");
-    tableRow.classList.add("table-body");
-    table.appendChild(tableRow);
+    items.forEach((items) => {
+        let tableRow = document.createElement("tr");
+        tableRow.classList.add("table-body");
 
-    let tdIdEl = document.createElement("td");
-    let tdIdText = document.createTextNode(element.id);
-    tdIdEl.appendChild(tdIdText);
-    tdIdEl.classList.add("id-body");
-    tableRow.appendChild(tdIdEl);
+        let tdIdEl = document.createElement("td");
+        let tdIdText = document.createTextNode(items.id);
+        tdIdEl.appendChild(tdIdText);
+        tdIdEl.classList.add("id-body");
+        tableRow.appendChild(tdIdEl);
 
-    let tdNameEl = document.createElement("td");
-    let tdNameText = document.createTextNode(element.name);
-    tdNameEl.appendChild(tdNameText);
-    tdNameEl.classList.add("name-body");
-    tableRow.appendChild(tdNameEl);
+        let tdNameEl = document.createElement("td");
+        let tdNameText = document.createTextNode(items.name);
+        tdNameEl.appendChild(tdNameText);
+        tdNameEl.classList.add("name-body");
+        tableRow.appendChild(tdNameEl);
 
-    let tdExpiryEl = document.createElement("td");
-    let tdExpiryText = document.createTextNode(
-      fn.formatDate(element.expiry, cnf)
-    );
-    tdExpiryEl.appendChild(tdExpiryText);
-    tdExpiryEl.classList.add("exp-date-body");
-    tableRow.appendChild(tdExpiryEl);
+        let tdExpiryEl = document.createElement("td");
+        let tdExpiryText = document.createTextNode(
+            fn.formatDate(items.expiry, cnf)
+        );
 
-    let tdStateEl = document.createElement("td");
-    let tdStateText = document.createTextNode(element.state);
-    tdStateEl.appendChild(tdStateText);
-    tdStateEl.classList.add("status-body");
-    tableRow.appendChild(tdStateEl);
+        tdExpiryEl.appendChild(tdExpiryText);
+        tdExpiryEl.classList.add("exp-date-body");
+        tableRow.appendChild(tdExpiryEl);
 
-    let tdChecksEl = document.createElement("td");
-    let tdChecksText = document.createTextNode(element.checks);
-    tdChecksEl.appendChild(tdChecksText);
-    tdChecksEl.classList.add("checks-body");
-    tableRow.appendChild(tdChecksEl);
-  });
+        let tdStateEl = document.createElement("td");
+        let tdStateText = document.createTextNode(items.state);
+
+        tdStateEl.appendChild(tdStateText);
+        tdStateEl.classList.add("status-body");
+
+
+        tableRow.appendChild(tdStateEl);
+
+        let tdChecksEl = document.createElement("td");
+        let tdChecksText = document.createTextNode(items.checks);
+        tdChecksEl.appendChild(tdChecksText);
+        tdChecksEl.classList.add("checks-body");
+        tableRow.appendChild(tdChecksEl);
+
+
+        table.appendChild(tableRow);
+    });
 };
 
-//printfulltable
-export let printTable = (tablesContainer, items, index) => {
-  let weekTable = document.createElement("table");
-  tablesContainer.appendChild(weekTable);
-  weekTable.setAttribute("id", "week-" + index);
-  weekTable.classList.add("main-table");
+/**
+ * Print a table in the dom starting from an object
+ * @param {HTMLElement} table - the table in the dom to print to
+ * @param {Object} tableItems - the object containing the items
+ */
+export let printTableItems = (table, tableItems) => {
+    for (const key in tableItems) {
+        let tableRow = document.createElement("tr");
+        tableRow.classList.add("table-body");
 
-  let weekTableHeader = document.createElement("thead");
-  weekTableHeader.setAttribute("id", "id-thead-" + index);
-  weekTable.appendChild(weekTableHeader);
+        let tdIdEl = document.createElement("td");
+        let tdIdText = document.createTextNode(tableItems[key][0]);
+        tdIdEl.appendChild(tdIdText);
+        tdIdEl.classList.add("id-body");
+        tableRow.appendChild(tdIdEl);
 
-  let weekTableHeadTr = document.createElement("tr");
-  weekTableHeader.appendChild(weekTableHeadTr);
-  weekTableHeadTr.classList.add("table-header");
+        let tdNameEl = document.createElement("td");
+        let tdNameText = document.createTextNode(tableItems[key][1]);
+        tdNameEl.appendChild(tdNameText);
+        tdNameEl.classList.add("name-body");
+        tableRow.appendChild(tdNameEl);
 
-  let weekTableHeadId = document.createElement("th");
-  let weekTableHeadIdText = document.createTextNode("ID");
-  weekTableHeadId.appendChild(weekTableHeadIdText);
-  weekTableHeadId.classList.add("id-header");
-  weekTableHeadTr.appendChild(weekTableHeadId);
+        let tdExpiryEl = document.createElement("td");
+        let tdExpiryText = document.createTextNode(tableItems[key][2]);
 
-  let weekTableHeadName = document.createElement("th");
-  let weekTableHeadNameText = document.createTextNode("Name");
-  weekTableHeadName.appendChild(weekTableHeadNameText);
-  weekTableHeadName.classList.add("name-header");
-  weekTableHeadTr.appendChild(weekTableHeadName);
+        tdExpiryEl.appendChild(tdExpiryText);
+        tdExpiryEl.classList.add("exp-date-body");
+        tableRow.appendChild(tdExpiryEl);
 
-  let weekTableHeadExp = document.createElement("th");
-  let weekTableHeadExpText = document.createTextNode("Expiry Date");
-  weekTableHeadExp.appendChild(weekTableHeadExpText);
-  weekTableHeadExp.classList.add("exp-date-header");
-  weekTableHeadTr.appendChild(weekTableHeadExp);
+        let tdStateEl = document.createElement("td");
+        let tdStateText = document.createTextNode(tableItems[key][3]);
+        tdStateEl.appendChild(tdStateText);
 
-  let weekTableHeadStatus = document.createElement("th");
-  let weekTableHeadStatusText = document.createTextNode("Status");
-  weekTableHeadStatus.appendChild(weekTableHeadStatusText);
-  weekTableHeadStatus.classList.add("status-header");
-  weekTableHeadTr.appendChild(weekTableHeadStatus);
+        // color for the expiry status
+        if (tableItems[key][3] === "New") {
+            tdStateEl.classList.add("new");
+        }
+        if (tableItems[key][3] === "Valid") {
+            tdStateEl.classList.add("valid");
+        }
+        if (tableItems[key][3] === "Old") {
+            tdStateEl.classList.add("old");
+        }
+        if (tableItems[key][3] === "Expired") {
+            tdStateEl.classList.add("expired");
+        }
+        tableRow.appendChild(tdStateEl);
 
-  let weekTableHeadChecks = document.createElement("th");
-  let weekTableHeadChecksText = document.createTextNode("Checks");
-  weekTableHeadChecks.appendChild(weekTableHeadChecksText);
-  weekTableHeadChecks.classList.add("checks-header");
-  weekTableHeadTr.appendChild(weekTableHeadChecks);
+        let tdChecksEl = document.createElement("td");
+        let tdChecksText = document.createTextNode(tableItems[key][4]);
+        tdChecksEl.appendChild(tdChecksText);
+        tdChecksEl.classList.add("checks-body");
+        tableRow.appendChild(tdChecksEl);
 
-  printItems(weekTable, items);
-  printSeparator(tablesContainer, index);
+        table.appendChild(tableRow);
+    }
 };
 
-//print filtered element
-export let printTableFilter = (tablesContainer, items, index) => {
-  let weekTable = document.createElement("table");
-  tablesContainer.appendChild(weekTable);
-  weekTable.setAttribute("id", "filter-week-" + index);
-  weekTable.classList.add("main-table");
-
-  let weekTableHeader = document.createElement("thead");
-  weekTable.appendChild(weekTableHeader);
-
-  let weekTableHeadTr = document.createElement("tr");
-  weekTableHeader.appendChild(weekTableHeadTr);
-  weekTableHeadTr.classList.add("table-header");
-
-  let weekTableHeadId = document.createElement("th");
-  let weekTableHeadIdText = document.createTextNode("ID");
-  weekTableHeadId.appendChild(weekTableHeadIdText);
-  weekTableHeadId.classList.add("id-header");
-  weekTableHeadTr.appendChild(weekTableHeadId);
-
-  let weekTableHeadName = document.createElement("th");
-  let weekTableHeadNameText = document.createTextNode("Name");
-  weekTableHeadName.appendChild(weekTableHeadNameText);
-  weekTableHeadName.classList.add("name-header");
-  weekTableHeadTr.appendChild(weekTableHeadName);
-
-  let weekTableHeadExp = document.createElement("th");
-  let weekTableHeadExpText = document.createTextNode("Expiry Date");
-  weekTableHeadExp.appendChild(weekTableHeadExpText);
-  weekTableHeadExp.classList.add("exp-date-header");
-  weekTableHeadTr.appendChild(weekTableHeadExp);
-
-  let weekTableHeadStatus = document.createElement("th");
-  let weekTableHeadStatusText = document.createTextNode("Status");
-  weekTableHeadStatus.appendChild(weekTableHeadStatusText);
-  weekTableHeadStatus.classList.add("status-header");
-  weekTableHeadTr.appendChild(weekTableHeadStatus);
-
-  let weekTableHeadChecks = document.createElement("th");
-  let weekTableHeadChecksText = document.createTextNode("Checks");
-  weekTableHeadChecks.appendChild(weekTableHeadChecksText);
-  weekTableHeadChecks.classList.add("checks-header");
-  weekTableHeadTr.appendChild(weekTableHeadChecks);
-
-  printItems(weekTable, items);
+/**
+ * Function that will clear the content of a table
+ * @param {Object} tableBody - the table to be cleared
+ */
+export let clearTable = (tableBody) => {
+    while (tableBody.firstChild) {
+        // This will remove all children within tbody
+        tableBody.removeChild(tableBody.firstChild);
+    }
 };
 
-//printweek
-export let printWeek = (week, index) => {
-  let weekTableHeader = document.getElementById("id-thead-" + index);
+/**
+ * Function that turns a table from the dom into an array
+ * @param {Object} table - the table from the dom
+ * @returns the table as a bi-dimensional array
+ */
+export let getTableData = (table) => {
+    let tableData = [];
+    let tableRows = table.getElementsByTagName("tr");
+    for (let i = 0; i < tableRows.length; i++) {
+        let tableRow = tableRows[i];
+        let tableDataRow = {};
+        let tableCells = tableRow.getElementsByTagName("td");
+        for (let j = 0; j < tableCells.length; j++) {
+            let tableCell = tableCells[j];
+            if (tableCell.innerText !== "undefined") {
+                tableDataRow[j] = tableCell.innerText;
+            }
+        }
+        // checks if the row is empty
+        if (Object.entries(tableDataRow).length !== 0) {
+            tableData.push(tableDataRow);
+        }
+    }
+    return tableData;
+};
 
-  let weekDiv = document.createElement("div");
-  weekDiv.classList.add("separator-container");
-  let weekDivText = document.createElement("p");
-  let weekDivTextContent = document.createTextNode(week);
-  weekDivText.appendChild(weekDivTextContent);
-  weekDiv.appendChild(weekDivText);
-  weekTableHeader.prepend(weekDiv);
-}
-
+/**
+ * Function that changes the week count in the dom
+ * @param {Number} week - the current value of the week
+ */
+export let weekText = (week, date) => {
+    global.weekText.innerText = `Week ${week}`;
+    global.weekDate.innerText = `${date}`;
+};
