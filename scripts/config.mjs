@@ -1,7 +1,7 @@
 /**
  * @file config.mjs
- * @authors Nemanja Gajicic, Pietro Milanese, Jacopo Trompeo, Davide Murroni
- * File containing an array of all possible item names.
+ * @authors Raul Bercea, Pietro Milanese, Gabriele Bovolenta, Dario Di Maria, Joele Melchiorre
+ * @description File containing an array of all possible item names.
  *
  * This array of item names can be imported in any file and should be used
  * when generating a random item for the market.
