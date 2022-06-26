@@ -43,6 +43,7 @@
 			<div id="settings" class="settings">
 				<!-- Form used to get the settings change from the user -->
 				<form action="..." id="form">
+					<!-- All the inputs in a wrapper -->
 					<div class="input-wrapper">
 						<label for="days-in-week-setting">Days in Week</label>
 						<input
@@ -98,18 +99,23 @@
 						<h5></h5>
 					</div>
 				</form>
+				<!-- Submit button -->
 				<button id="submit">Save</button>
 			</div>
 		</div>
 
-		<div class="main">
+		<!-- tables -->
+		<main class="main">
+			<!-- Button that goes back -->
 			<button id="back-button" class="visible">&#8592;</button>
 			<!-- Container for the main table -->
 			<div class="table-container">
+				<!-- Week and date-->
 				<div class="separator-container">
-					<p id="week">Week 1</p>
+					<p id="week">Week</p>
 					<p id="date">20/01/22</p>
 				</div>
+				<!-- Main table -->
 				<table id="main-table" class="main-table">
 					<thead>
 						<tr class="table-header">
@@ -125,6 +131,7 @@
 				<div class="separator-container">
 					<p>Filtered</p>
 				</div>
+				<!-- Filtered Table -->
 				<table id="table-content-filtered" class="main-table">
 					<thead>
 						<tr class="table-header">
@@ -138,10 +145,11 @@
 					<tbody id="table-content-filtered"></tbody>
 				</table>
 			</div>
-
+			<!-- Button that goes back -->
 			<button id="forward-button">&#8594;</button>
-		</div>
+		</main>
 
+		<!-- Footer of the page -->
 		<div class="footer">
 			<p>
 				Copyright &copy; 2022 Raul Bercea, Pietro Milanese, Dario Di
@@ -150,6 +158,9 @@
 			</p>
 		</div>
 
+		<!-- Loading the js modules -->
 		<script type="module" src="./scripts/main.mjs"></script>
+
+		<!-- End of Body -->
 	</body>
 </html>
