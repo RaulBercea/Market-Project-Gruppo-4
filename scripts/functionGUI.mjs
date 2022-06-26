@@ -2,6 +2,7 @@ import * as fn from "./functions.mjs";
 import { config as cnf } from "./config.mjs"; //configuration object
 import * as global from "./globals.mjs";
 
+
 //print full product in a raw
 export let printItems = (table, items) => {
     items.forEach((items) => {

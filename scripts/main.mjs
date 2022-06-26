@@ -15,7 +15,7 @@ import { itemNames } from "./itemsNames.mjs"; //array with a list of all possibl
 import * as global from "./globals.mjs";
 
 let init = () => {
-  // the ammount of time the program runns for
+  // the ammount of time the program runs for
   let runtime = cnf.weeksRuntime - 1;
   //startDate and endDate define the range of the generated items' expiry dates
   let startDate = new Date();
@@ -29,12 +29,6 @@ let init = () => {
   let filteredArray = [];
 
   let currentWeek = 0; // the index of the current week in the week array
-
-  // the unfiltered table
-  let mainTable = document.getElementById("table-content");
-
-  // the fitered table
-  let tableFiltered = document.getElementById("table-content-filtered");
 
   let checkItems = (items) => {
     items.forEach((item) => {
@@ -54,8 +48,8 @@ let init = () => {
   let addTableOfItems = () => {
 
     if (weeks.length > runtime) {
-      fng.printTableItems(mainTable, tableArray[currentWeek]);
-      fng.printTableItems(tableFiltered, filteredArray[currentWeek]);
+      fng.printTableItems(global.mainTable, tableArray[currentWeek]);
+      fng.printTableItems(global.tableFiltered, filteredArray[currentWeek]);
       return;
     }
     // Add new items
@@ -63,7 +57,7 @@ let init = () => {
     // add unfiltered items to the weeks array
     weeks.push(items);
     // printing the unfiltered items on the table in the dom
-    fng.printItems(mainTable, weeks[currentWeek]);
+    fng.printItems(global.mainTable, weeks[currentWeek]);
 
     // filtering items
     items = items.filter(fn.checkItem);
@@ -72,11 +66,11 @@ let init = () => {
     filteredWeek.push(items);
 
     // printing the filtered items to the filtered table in the dom
-    fng.printItems(tableFiltered, filteredWeek[currentWeek]);
+    fng.printItems(global.tableFiltered, filteredWeek[currentWeek]);
 
     if (tableArray.length <= currentWeek) {
-      tableArray.push(fng.getTableData(global.table));
-      filteredArray.push(fng.getTableData(global.filteredTable));
+      tableArray.push(fng.getTableData(global.mainTable));
+      filteredArray.push(fng.getTableData(global.tableFiltered));
     }
 
     // Add days to the current date
@@ -116,8 +110,8 @@ let init = () => {
     // printing the next week if there is still weeks to be printed
     if (direction === "++") {
       // remove the content of the table
-      fng.clearTable(mainTable);
-      fng.clearTable(tableFiltered);
+      fng.clearTable(global.mainTable);
+      fng.clearTable(global.tableFiltered);
       // increase the week counter
       currentWeek++;
       // print the week
@@ -126,8 +120,8 @@ let init = () => {
     // if above the starting week print the previous week
     else if (direction === "--" && currentWeek > 0) {
       // clear the table
-      fng.clearTable(mainTable);
-      fng.clearTable(tableFiltered);
+      fng.clearTable(global.mainTable);
+      fng.clearTable(global.tableFiltered);
       // decrease the week count
       currentWeek--;
       // print the week
@@ -158,20 +152,15 @@ let init = () => {
   for (let i = runtime; i >= 0; i--) {
     global.backButton.dispatchEvent(new Event("click"));
   }
-
-  // running the functions when the user clicks on the save button
-  global.settingsSubmit.addEventListener("click", () => {
-    let valid = set.validation(); // validating inputs
-    /* set.updateConfig(valid); */ // updating the configuration
-    if (valid) {
-      fng.clearTable(mainTable);
-      fng.clearTable(tableFiltered);
-
-
-
-      init(); // reinitializing the program
-    }
-  });
 };
 
 init();
+
+// running the functions when the user clicks on the save button
+global.settingsSubmit.addEventListener("click", () => {
+  let valid = set.validation(); // validating inputs
+  /* set.updateConfig(valid); */ // updating the configuration
+  if (valid) {
+    init(); // reinitializing the program
+  }
+});

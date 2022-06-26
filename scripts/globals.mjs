@@ -9,9 +9,9 @@ export let backButton = document.getElementById("back-button");
 // forward button for the table
 export let forwardButton = document.getElementById("forward-button");
 // table that holds the items
-export let table = document.getElementById("main-table");
+export let mainTable = document.getElementById("main-table");
 // table that holds the filtered items
-export let filteredTable = document.getElementById("table-content-filtered");
+export let tableFiltered = document.getElementById("table-content-filtered");
 
 // the week text in the separator
 export let weekText = document.getElementById("week");
