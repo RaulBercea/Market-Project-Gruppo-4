@@ -13,7 +13,7 @@
  */
 
 import { config as cnf } from "./config.mjs"; //configuration object
-import * as global from "./globals.mjs";     
+import * as global from "./globals.mjs";
 
 /**
  * Function validation form
@@ -23,7 +23,6 @@ import * as global from "./globals.mjs";
  */
 
 function controlNumber(element, min, max) {
-    console.log(element.getAttribute('id'));
     if ((/\D|^0/gi.test(element.value))) {
         document.querySelector(`#${element.getAttribute('id')} + h5`).textContent = 'Devi inserire un numero compreso tra ' + min + ' e ' + max;
         return false;
@@ -72,11 +71,11 @@ export function validation() {
         && controlNumber(global.shelfLife, 1, 10)
         && controlNumber(global.itemsPerWeek, 1, 10)
         && controlNumber(global.runtime, 1, 10)) {
-        cnf.daysInWeek = global.daysInWeek.value;
-        cnf.startingOffset = global.startingOffset.value;
-        cnf.shelfLife = global.shelfLife.value;
-        cnf.newItemsPerWeek = global.itemsPerWeek.value;
-        cnf.weeksRuntime = global.runtime.value;
+        cnf.daysInWeek = parseInt(global.daysInWeek.value);
+        cnf.startingOffset = parseInt(global.startingOffset.value);
+        cnf.shelfLife = parseInt(global.shelfLife.value);
+        cnf.newItemsPerWeek = parseInt(global.itemsPerWeek.value);
+        cnf.weeksRuntime = parseInt(global.runtime.value);
 
         valid = true;
     };

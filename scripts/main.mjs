@@ -19,8 +19,9 @@ let init = () => {
   let runtime = cnf.weeksRuntime - 1;
   //startDate and endDate define the range of the generated items' expiry dates
   let startDate = new Date();
-  let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
   let currentDate = fn.addDays(startDate, cnf.startingOffset);
+  let endDate = fn.addDays(startDate, runtime * cnf.daysInWeek);
+  console.log(currentDate);
   let weeks = []; // aray wich will hold the items divided by week
   let items = []; //	array which will hold the items
   let filteredWeek = [];
@@ -161,6 +162,8 @@ global.settingsSubmit.addEventListener("click", () => {
   let valid = set.validation(); // validating inputs
   /* set.updateConfig(valid); */ // updating the configuration
   if (valid) {
+    fng.clearTable(global.mainTable);
+    fng.clearTable(global.tableFiltered);
     init(); // reinitializing the program
   }
 });
