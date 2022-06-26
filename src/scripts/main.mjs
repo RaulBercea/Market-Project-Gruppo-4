@@ -13,6 +13,8 @@ import * as fng from "./functionGUI.mjs"; //main functions used to for the GUI
 import * as set from "./setting.mjs"; //main functions used to for the GUI
 import { itemNames } from "./itemsNames.mjs"; //array with a list of all possible item names
 import * as global from "./globals.mjs"; //holds all the global variables in the project
+import '../styles/main.css';
+import '../styles/modern-reset.css';
 
 let init = () => {
   // the ammount of time the program runs for
