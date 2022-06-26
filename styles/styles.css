@@ -224,7 +224,6 @@ input[type="checkbox"] {
 	margin: 0;
 	height: 25px;
 	color: var(--accent-color-2);
-	visibility: hidden;
 }
 
 #submit {

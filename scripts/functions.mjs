@@ -1,6 +1,6 @@
 /**
  * @file functions.mjs
- * @authors Nemanja Gajicic, Pietro Milanese, Jacopo Trompeo, Davide Murroni
+ * @authors Gabriele Bovolenta, Raul Bercea, Dario Di Maria, Pietro Milanese, Joele Melchiorre
  * File with our main utility functions.
  *
  * This file is used to:

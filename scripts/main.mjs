@@ -161,12 +161,16 @@ let init = () => {
 
   // running the functions when the user clicks on the save button
   global.settingsSubmit.addEventListener("click", () => {
-    let valid = set.validate(); // validating inputs
-    set.updateConfig(valid); // updating the configuration
+    let valid = set.validation(); // validating inputs
+    /* set.updateConfig(valid); */ // updating the configuration
     if (valid) {
+      fng.clearTable(mainTable);
+      fng.clearTable(tableFiltered);
+
+
+
       init(); // reinitializing the program
     }
-    console.log(cnf);
   });
 };
 
