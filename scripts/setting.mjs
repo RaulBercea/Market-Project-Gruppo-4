@@ -84,3 +84,89 @@ export let updateConfig = (valid) => {
     }
 }
 
+/**
+ * @file main.mjs
+ * @authors Gabriele Bovolenta, Pietro Milanese, Dario Di Maria, Raul Bercea
+ * Setting file for validation's form
+ *
+ * This file imports config to edit it through the form.
+ */
+
+import { config as cnf } from "./config.mjs"; //configuration object
+
+/**
+ * Function setting form hidden
+ */
+function settingForm() {
+    let setting = document.getElementById("target");
+    let form = document.getElementById("hidden-setting");
+
+    setting.addEventListener("click", function () {
+        form.classList.toggle("hidden");
+    });
+};
+
+settingForm();
+
+/**
+ * Function validation form
+ * @param {element}  
+ * @param {minore}  
+ * @param {maggiore} 
+ * @param {child} 
+ */
+function controlNumber(element, minore, maggiore, child) {
+    if ((/\D|^0/gi.test(element.value))) {
+        document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero compreso tra ' + minore + ' e ' + maggiore;
+        return false;
+    }
+    else if (element.value < minore) {
+        document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero compreso tra ' + minore + ' e ' + maggiore;
+        return false;
+    }
+    else if (element.value > maggiore) {
+        document.querySelector(`#form div:nth-of-type(${child}) h5`).textContent = 'Devi inserire un numero minore di ' + maggiore;
+        return false;
+    }
+    else {
+        return true;
+    }
+};
+
+/**
+ * Function cancel
+ * Reset all the h5 in the form
+ */
+function cancel() {
+    title.forEach(element => {
+        element.textContent = "";
+    });
+};
+
+
+/**
+ * Function validation
+ */
+function validation() {
+    cancel();
+
+    controlNumber(weeks, 0, 10, 1);
+    controlNumber(weeklyProduction, 1, 5, 2);
+    controlNumber(weeklyDuration, 1, 10, 3);
+    controlNumber(checkThreshold, 1, 10, 4);
+    controlNumber(dateOffset, 1, 10, 5);
+
+    if (controlNumber(weeks, 1, 10, 1)
+        && controlNumber(weeklyProduction, 1, 5, 2)
+        && controlNumber(weeklyDuration, 1, 10, 3)
+        && controlNumber(checkThreshold, 1, 10, 4)
+        && controlNumber(dateOffset, 1, 10, 5)) {
+        cnf.weeksRuntime = weeks.value;
+        cnf.newItemsPerWeek = weeklyProduction.value;
+        cnf.shelfLife = checkThreshold.value;
+        cnf.startingOffset = dateOffset.value;
+    };
+};
+
+const button = document.getElementById('submit');
+button.addEventListener('click', validation);
