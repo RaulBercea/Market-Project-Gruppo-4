@@ -13,7 +13,7 @@ When the product becomes expired it is removed from inventory.
 By means of the buttons it is possible to browse the history of the weeks with the various products.
 # Configuration and technical characteristics
 
-
+The program is written through JavaScript for the operating files, HTML for the visualization page and CSS for the HTML page style.
 # Files and project structure
 
 The index file contains the source code of the main html page.
