@@ -140,14 +140,16 @@ let init = () => {
   // event listener for the click of the back button
   global.backButton.addEventListener("click", () => {
     tableMove("--"); // make the week go back
-    fng.weekText(currentWeek + 1);
+    let daysToAdd = cnf.daysInWeek * currentWeek + 1;
+    fng.weekText(currentWeek + 1, fn.formatDate(fn.addDays(currentDate, daysToAdd), cnf));
     toggleButton(); // toggle the button if at the minimum
   });
 
   // event listener for the forward button
   global.forwardButton.addEventListener("click", () => {
     tableMove("++"); // make the week go back
-    fng.weekText(currentWeek + 1);
+    let daysToAdd = cnf.daysInWeek * currentWeek + 1;
+    fng.weekText(currentWeek + 1, fn.formatDate(fn.addDays(currentDate, daysToAdd), cnf));
     toggleButton(); // toggle the button if at the minimum
   });
 

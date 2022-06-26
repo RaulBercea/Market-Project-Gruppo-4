@@ -148,6 +148,7 @@ export let getTableData = (table) => {
  * Function that changes the week count in the dom
  * @param {Number} week - the current value of the week
  */
-export let weekText = (week) => {
+export let weekText = (week, date) => {
     global.weekText.innerText = `Week ${week}`;
+    global.weekDate.innerText = `${date}`;
 };

@@ -15,6 +15,7 @@ export let filteredTable = document.getElementById("table-content-filtered");
 
 // the week text in the separator
 export let weekText = document.getElementById("week");
+export let weekDate = document.getElementById("date");
 
 // the form fields
 export let daysInWeek = document.getElementById("days-in-week-setting");
