@@ -1,7 +1,10 @@
 /**
  * @file: globals.js
+ * @author: Raul Bercea, Pietro Milanese, Gabriele Bovolenta, Dario Di Maria, Joele Melchiorre
  * holds all the global variables in the project
  *
+ * By storing the global variables in a separate module it makes accesing them from another
+ * file easyer
  */
 
 // back button for the table

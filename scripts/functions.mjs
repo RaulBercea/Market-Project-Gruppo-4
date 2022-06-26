@@ -6,8 +6,6 @@
  * This file is used to:
  * - generate items of a supermarket
  * - update those items based on various characteristics
- * - print the items to the console
- * - manipulate certain useful variables (increment a date, pad a string, pad a number)
  */
 
 //#region ITEM GENERATION
@@ -136,83 +134,6 @@ export let formatDate = (date, cnf) => {
 	return formattedDate;
 };
 
-/**
- * Returns a 0 padded number. The length of the number is configurable
- * @param {number} num - the number to be 0 padded
- * @param {number} [length=3] - length of the final 0 padded number, equals to the number of digits + zero padding
- * @return {string} the final 0 padded number
- */
-let padNumber = (num, length = 3) => num.toString().padStart(length, "0");
-
-/**
- * Adds any amount of padding to the start and the end of a string
- * @param {string} str - the string to pad
- * @param {number} length - the final length to reach with the added padding
- * @param {string} [char="*"] - the character to use for padding
- * @returns {string} the string with the addedd padding at the start and the end
- */
-let padString = (str, length, char = "*") => {
-	str = str.replace(/\s/g, char);
-
-	let padLength = length - str.length;
-	let padLeft = Math.ceil(padLength / 2) + str.length;
-	return str.padStart(padLeft, char).padEnd(length, char);
-};
-
-//#endregion
-
-//#region OUTPUT
-
-/**
- * Returns a string used to style the output in the console based on the item state
- * @param {string} state - the state of an item
- * @param {object} cnf - the config object containing the properties used to style the output
- * @param {string} cnf.newColor - the color to be used if the item state is equal to "New"
- * @param {string} cnf.validColor - the color to be used if the item state is equal to "Valid"
- * @param {string} cnf.oldColor - the color to be used if the item state is equal to "Old"
- * @param {string} cnf.expiredColor - the color to be used if the item state is equal to "Expired"
- * @param {string} cnf.fallbackColor - the color to be used if the item has no state
- * @returns {string} the string containing the css style to output in the console
- */
-let styleOutput = (state, cnf) => {
-	if (state === "New") {
-		return `font-weight: bold; background-color: ${cnf.newColor};`;
-	}
-	if (state === "Valid") {
-		return `font-weight: bold; background-color: ${cnf.validColor};`;
-	}
-	if (state === "Old") {
-		return `font-weight: bold; background-color: ${cnf.oldColor};`;
-	}
-	if (state === "Expired") {
-		return `font-weight: bold; background-color: ${cnf.expiredColor};`;
-	}
-	return `font-weight: bold; background-color: ${cnf.fallbackColor};`;
-};
-
-/**
- * Logs to the console a string such as : "00item.id: ****item.name**** item.expiry *******item.state******* [item.checks]"
- * @param {object} items - an array with item objects
- * @param {object} cnf - the config object containing the properties used to print to the console
- * @param {number} cnf.zeroPaddedDigits - the final lenght to reach with the added 0 padding to a number
- * @param {string} cnf.paddingCharacter - the character used to pad a string
- * @param {number} cnf.paddedNameChars - the final length to reach with the added padding to item.name
- * @param {number} cnf.paddedStateChars - the final length to reach with the added padding to item.state
- */
-export let printItems = (items, cnf) => {
-	for (let item of items) {
-		let id = padNumber(item.id, cnf.zeroPaddedDigits);
-		let name = padString(item.name, cnf.paddedNameChars, cnf.paddingCharacter);
-		let expiry = formatDate(item.expiry, cnf);
-		let state = padString(item.state, cnf.paddedStateChars, cnf.paddingCharacter);
-		let checks = `${item.checks}${item.checks === 1 ? " check " : " checks"}`;
-
-		let style = styleOutput(item.state, cnf);
-		let output = `${id}: ${name} ${expiry} ${state} [${checks}]`;
-
-		console.log("%c" + output, style);
-	}
-};
 
 //#endregion
 
